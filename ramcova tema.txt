@@ -1,0 +1,9 @@
+GPU Acceleration for Regular Expressions: Revision on Newer Hardware
+
+In my article, I will perform an analysis by synthesizing findings from various studies, with a primary focus on the study titled "GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space."[1]
+
+I intend to re-evaluate the performance metrics, specifically concerning GPU acceleration of regular expression matching, on a more recent hardware setup to see if there have been any changes or improvements. By doing so, I aim to provide updated insights into the effectiveness of GPU-based regex acceleration.
+
+The article's goal is to provide a comprehensive and up-to-date analysis of GPU versus CPU performance in regular expression tasks, supported by a synthesis of relevant research and fresh benchmarking on modern hardware.
+
+[1] Yu, Xiaodong, and Michela Becchi. "GPU acceleration of regular expression matching for large datasets: exploring the implementation space." Proceedings of the ACM International Conference on Computing Frontiers. 2013.
