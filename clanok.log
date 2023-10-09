@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.25)  9 OCT 2023 13:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.9)  9 OCT 2023 14:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -6,11 +6,7 @@ entering extended mode
 **"/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex"
 (/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-02-22> (/usr/share/texlive/texmf-dist/tex/latex/coursepaper/coursepaper.cls
-Document Class: coursepaper 2003/08/19 v2.0
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2023-02-22> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
@@ -26,7 +22,7 @@ File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2023/02/13 3.86 The Babel package
 \babel@savecnt=\count193
 \U@D=\dimen141
@@ -54,25 +50,11 @@ Package babel Info: Making - an active character on input line 294.
 )) (/usr/share/texlive/texmf-dist/tex/generic/babel/locale/sk/babel-slovak.tex
 Package babel Info: Importing font and identification data for slovak
 (babel)             from babel-sk.ini. Reported on input line 11.
-) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
- (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2enc.def
-File: il2enc.def 1997/08/20 CSLaTeX
-Now handling font encoding IL2 ...
-... no UTF-8 mapping file for font encoding IL2
-)
-LaTeX Font Info:    Trying to load font information for IL2+cmr on input line 112.
- (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmr.fd
-File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks16
-\inpenc@posthook=\toks17
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+\KV@toks@=\toks16
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
@@ -86,6 +68,20 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen142
 \Gin@req@width=\dimen143
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+ (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2enc.def
+File: il2enc.def 1997/08/20 CSLaTeX
+Now handling font encoding IL2 ...
+... no UTF-8 mapping file for font encoding IL2
+)
+LaTeX Font Info:    Trying to load font information for IL2+cmr on input line 112.
+ (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmr.fd
+File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
 ) (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -205,26 +201,26 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 ) (./clanok.aux)
 \openout1 = `clanok.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count274
@@ -244,54 +240,51 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 30.
+Package hyperref Info: Link coloring OFF on input line 33.
  (./clanok.out) (./clanok.out)
 \@outlinefile=\write3
 \openout3 = `clanok.out'.
 
-LaTeX Font Info:    Trying to load font information for IL2+cmss on input line 33.
- (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmss.fd
-File: il2cmss.fd 1997/02/13 CsLaTeX font definitions
-)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 33.
+(Font)              <17.28> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 33.
-LaTeX Font Info:    Trying to load font information for IL2+cmtt on input line 33.
+(Font)              <12> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 36.
+LaTeX Font Info:    Trying to load font information for IL2+cmtt on input line 36.
  (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmtt.fd
 File: il2cmtt.fd 1997/08/20 CSLaTeX font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 33.
+(Font)              <5> on input line 36.
+<diagram.png, id=45, 392.46625pt x 178.6675pt>
+File: diagram.png Graphic file (type png)
+<use diagram.png>
+Package pdftex.def Info: diagram.png  used on input line 70.
+(pdftex.def)             Requested size: 284.52756pt x 129.53743pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 33.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 33.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+(Font)              <7> on input line 74.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 68.
- [2] (./clanok.bbl) [3] (./clanok.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./clanok.bbl [2 <./diagram.png>]) [3] (./clanok.aux)
 Package rerunfilecheck Info: File `clanok.out' has not changed.
-(rerunfilecheck)             Checksum: 124F4BC7C232687AF00FEEFEBD81B2CD;1177.
+(rerunfilecheck)             Checksum: F17CBC54AD870B0828733B0BD3E40C5B;1073.
  ) 
 Here is how much of TeX's memory you used:
- 9974 strings out of 477985
- 158876 string characters out of 5839380
- 1857388 words of memory out of 6000000
- 30007 multiletter control sequences out of 15000+600000
- 526083 words of font info for 64 fonts, out of 8000000 for 9000
+ 9846 strings out of 477985
+ 156296 string characters out of 5839380
+ 1860388 words of memory out of 6000000
+ 29890 multiletter control sequences out of 15000+600000
+ 525625 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,8n,76p,384b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cssl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on clanok.pdf (3 pages, 130206 bytes).
+ 75i,8n,76p,384b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cssl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on clanok.pdf (3 pages, 126199 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
+ 179 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
  25 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

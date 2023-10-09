@@ -1,9 +1,11 @@
 % Metódy inžinierskej práce
 
-\documentclass[10pt,twoside,slovak,a4paper]{coursepaper}
+\documentclass[10pt,twoside,slovak,a4paper]{article}
 
 \usepackage[slovak]{babel}
 %\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\graphicspath{ {./} }
 \usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -15,7 +17,8 @@
 
 \pagestyle{headings}
 
-\title{GPU accelerated regular expresion\thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
+\title{GPU Acceleration for Regular Expressions: Revision on Newer Hardware
+\thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
 
 \author{Roman Gajdoš\\[2pt]
 	{\small Slovenská technická univerzita v adfadfa}\\
@@ -49,7 +52,6 @@ Záverečné poznámky prináša časť~\ref{zaver}.
 
 
 \section{Nejaká časť} \label{nejaka}
-
 \section{Nova cast} \label{nejaky label}
 Z obr.~\ref{f:rozhod} je všetko jasné.
 
@@ -64,6 +66,10 @@ Z obr.~\ref{f:rozhod} je všetko jasné.
 
 
 \section{Iná časť} \label{ina}
+\begin{figure}[t]
+	\includegraphics[width=10cm]{diagram.png}
+	\centering
+\end{figure}
 
 Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
 
