@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex clanok"] 1697456274 "clanok.aux" "clanok.bbl" "clanok" 1697456275 0
+["bibtex clanok"] 1697457035 "clanok.aux" "clanok.bbl" "clanok" 1697457036 0
   "./literatura.bib" 1632415036 1636 a57ba484b2d5b990314cf79f0f7996d7 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/abbrv.bst" 1689984000 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "clanok.aux" 1697456275 3143 bf36de0a0b91c5286ed65f3732c6a0c7 "pdflatex"
+  "clanok.aux" 1697457035 3143 0d79ede107caf21f144c364cc8abdf69 "pdflatex"
   (generated)
   "clanok.bbl"
   "clanok.blg"
   (rewritten before read)
-["pdflatex"] 1697456274 "/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex" "clanok.pdf" "clanok" 1697456275 0
-  "/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex" 1697456274 4332 492d488046bb12d70517ec87da2310e3 ""
+["pdflatex"] 1697457035 "/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex" "clanok.pdf" "clanok" 1697457036 0
+  "/home/roman/Projects/GPU regex/GPU_regex_article/clanok.tex" 1697457035 4488 b13a20f4c89b451598e30638d09702bd ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -107,15 +107,17 @@
   "/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty" 1158586182 21369 9ef165ca6df8815c92e693146a376c92 ""
   "/usr/share/texlive/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty" 1137111090 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1689984000 40900 887e0dc8cac988a9e9c574af364cf837 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695326843 363340 75fd4d6c007ee405977cbb51eb651466 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1696853198 6477880 c70d81c513f40061ea6d34d74ef9b550 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1697456867 6477868 9f4d4bdb6f9fb82ab81e266fa194dbc6 ""
   "Diagram2.png" 1697455952 4609 587977c25ac7764cd20d97b431071440 ""
-  "clanok.aux" 1697456275 3143 bf36de0a0b91c5286ed65f3732c6a0c7 "pdflatex"
-  "clanok.bbl" 1697456274 883 713da63f8a14508a3a299287d09f7b05 "bibtex clanok"
-  "clanok.out" 1697456275 978 cbec6f5f5debadf5431fad0add6d6ef3 "pdflatex"
-  "clanok.tex" 1697456274 4332 492d488046bb12d70517ec87da2310e3 ""
+  "clanok.aux" 1697457035 3143 0d79ede107caf21f144c364cc8abdf69 "pdflatex"
+  "clanok.bbl" 1697457035 883 713da63f8a14508a3a299287d09f7b05 "bibtex clanok"
+  "clanok.out" 1697457035 978 cbec6f5f5debadf5431fad0add6d6ef3 "pdflatex"
+  "clanok.tex" 1697457035 4488 b13a20f4c89b451598e30638d09702bd ""
   "diagram.png" 1696853251 9270 cfafdc5c036c28fc9b8fa3b42e12c80b ""
+  "fiit/PNG/STU-FIIT-anch.png" 1343404972 7172 abd2fa76e6a22f721a730cb3040526ee ""
   (generated)
   "clanok.aux"
   "clanok.log"
