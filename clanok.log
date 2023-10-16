@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.9)  16 OCT 2023 13:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.9)  16 OCT 2023 13:37
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -303,17 +303,40 @@ LaTeX Warning: Reference `f:rozhod' on page 1 undefined on input line 56.
 File: diagram.png Graphic file (type png)
 <use diagram.png>
 Package pdftex.def Info: diagram.png  used on input line 72.
-(pdftex.def)             Requested size: 137.9979pt x 62.82353pt.
+(pdftex.def)             Requested size: 180.79724pt x 82.308pt.
 <Diagram2.png, id=42, 331.2375pt x 110.4125pt>
 File: Diagram2.png Graphic file (type png)
 <use Diagram2.png>
 Package pdftex.def Info: Diagram2.png  used on input line 77.
-(pdftex.def)             Requested size: 137.9979pt x 45.9989pt.
+(pdftex.def)             Requested size: 180.79724pt x 60.26543pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 95.
-[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./diagram.png> <./Diagram2.png>] (./clanok.bbl) [2] (./clanok.aux)
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+ []\IL2/cmr/bx/n/10 Veµmi dôle¾itá poznámka.[] \IL2/cmr/m/n/10 Niekedy je
+ []
+
+(./clanok.bbl
+Underfull \hbox (badness 1824) in paragraph at lines 9--12
+\IL2/cmr/m/n/10 multi-level con-fig-u-ra-tion of fea-ture mod-els.
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}
+
+
+]
+Underfull \hbox (badness 1424) in paragraph at lines 14--17
+\IL2/cmr/m/n/10 based fea-ture mod-el-ing and con-straints: A
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+\IL2/cmr/m/n/10 version 5.0.  []$\IL2/cmtt/m/n/10 http : / / www . sei . cmu . edu /
+ []
+
+) [2
+
+ <./diagram.png> <./Diagram2.png>] (./clanok.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -322,17 +345,17 @@ Package rerunfilecheck Info: File `clanok.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  11333 strings out of 477985
- 184972 string characters out of 5839380
- 1860388 words of memory out of 6000000
+ 184982 string characters out of 5839380
+ 1868388 words of memory out of 6000000
  31366 multiletter control sequences out of 15000+600000
- 525625 words of font info for 63 fonts, out of 8000000 for 9000
+ 525048 words of font info for 62 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,79p,384b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cssl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on clanok.pdf (2 pages, 127971 bytes).
+ 75i,10n,79p,384b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cssl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on clanok.pdf (2 pages, 124258 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
+ 170 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
  75 words of extra memory for PDF output out of 10000 (max. 10000000)
 
