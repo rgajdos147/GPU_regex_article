@@ -1,0 +1,81 @@
+% Metódy inžinierskej práce
+
+\documentclass[10pt,onecolumn,twoside,english,a4paper]{article}
+
+% \usepackage[slovak]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\graphicspath{ {./} }
+\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url} % príkaz \url na formátovanie URL
+\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
+\usepackage{subfig}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+% \usepackage{}
+%\usepackage{times}
+
+\pagestyle{headings}
+
+\title{Overview and Analysis of GPU Acceleration for Regular Expressions
+\thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
+
+\author{Roman Gajdoš\\[2pt]
+	{\small Slovak University of Technology in Bratislava}\\
+	{\small Faculty of Informatics and Information Technologies}\\
+	{\small \texttt{xgajdosr@stuba.sk}}
+	}
+
+\date{\small 25. september 2023} % upravte
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\ldots
+\end{abstract}
+
+
+
+\section{Introduction}
+
+Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages. They appear in approximately a third of open-source projects. They are employed in technical fields, ranging from database querying, programming language compiling, and web scraping (the process of extracting data or information from internet sites) to network security, such as deep packet inspection, and bioinformatics, among others.
+
+Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages.
+
+In many applications, regular expressions are applied to large amounts of input data, or require a fast response, or both. It stands to reason that efficiency in both memory and speed is the key to optimal use.
+Here, the question is how to achieve the greatest possible efficiency for a given problem that is addressed by the regular expressions.
+The processor’s capacity to execute multiple expressions simultaneously is notably restricted, even in the current era of multicore processors. However, its frequency and cache memory speed prove excellent for handling small datasets. For tasks that require more extensive parallelism, FPGAs (Field-Programmable Gate Arrays) or ASICs (Application-Specific Integrated Circuits) have been used. The problem is that they are slow to configure and inflexible to change.
+
+In recent years, GPUs with their extensive parallelism, computational capabilities, and high memory bandwidth have become prevalent in numerous computing systems. They have scaled at a faster rate than CPUs, providing significant computing power. APIs were created to allow General Purpose Graphics Processing Units (GPGPU) to accelerate processing in supported applications, replacing shading languages and simplifying their use for programmers. Two popular APIs are Compute Unified Device Architecture (CUDA) and Open Computing Language (OpenCL).
+
+In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Regular Expressions}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
+
+By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}.
+
+\section{Background} \label{Background}
+
+\subsection{Regular Expressions} \label{Regular Expressions}
+
+\subsubsection{Finite Automata} \label{Finite Automata}
+
+\subsection{Parallel computing platforms} \label{Parallel computing platforms}
+
+\subsubsection{CUDA} \label{Cuda}
+
+\subsubsection{OpenCL} \label{OpenCL}
+
+\section{Existing solutions} \label{Existing solutions}
+
+\section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
+
+
+\bibliography{zdroje}
+\bibliographystyle{abbrv} % prípadne alpha, abbrv alebo hociktorý iný
+\end{document}
