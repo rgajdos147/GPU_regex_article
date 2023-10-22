@@ -9,8 +9,9 @@ M.~Becchi, M.~Franklin, and P.~Crowley.
 \bibitem{Chapman:Usage}
 C.~Chapman and K.~T. Stolee.
 \newblock Exploring regular expression usage and context in python.
-\newblock ISSTA 2016, page 282–293, New York, NY, USA, 2016. Association for
-  Computing Machinery.
+\newblock In {\em Proceedings of the 25th International Symposium on Software
+  Testing and Analysis}, ISSTA 2016, page 282–293, New York, NY, USA, 2016.
+  Association for Computing Machinery.
 
 \bibitem{Davis:Re-use}
 J.~C. Davis, L.~G. Michael~IV, C.~A. Coghlan, F.~Servant, and D.~Lee.

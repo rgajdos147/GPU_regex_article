@@ -51,7 +51,8 @@ Regular expressions are implemented using finite automata, in either determinist
 
 In many applications, regular expressions are applied to large amounts of input data, or require a fast response, or both. It stands to reason that efficiency in both memory and speed is the key to optimal use\cite{Xia:FSA-scaling}.
 Here, the question is how to achieve the greatest possible efficiency for a given problem that is addressed by the regular expressions.
-The processor's capacity to execute multiple expressions simultaneously is notably restricted, even in the current era of multicore processors\cite{Lee:myths}. However, its frequency and cache memory speed prove excellent for handling small datasets. For tasks that require more extensive parallelism, FPGAs (Field-Programmable Gate Arrays) or ASICs (Application-Specific Integrated Circuits) have been used. The problem is that they are slow to configure\cite{XU:regex_alg_slow} and inflexible to change\cite{fuchs2019accelerator}.
+
+The processor's capacity to execute multiple expressions simultaneously is notably restricted, even in the current era of multicore processors\cite{Lee:myths}. However, its frequency and cache memory speed prove excellent for handling small datasets. For tasks that require more extensive parallelism, FPGAs (Field-Programmable Gate Arrays) or ASICs (Application-Specific Integrated Circuits) have been used. The problem is that they are slow to configure\cite{XU:regex_alg_slow} and inflexible to change\cite{fuchs2019accelerator,Liu:Asynchronous}.
 
 In recent years, GPUs with their extensive parallelism, computational capabilities, and high memory bandwidth have become prevalent in numerous computing system. They have scaled at a faster rate than CPUs, providing significant computing power\cite{sun2019summarizing,Liu:Asynchronous}. APIs were created to allow General Purpose Graphics Processing Units (GPGPU) to accelerate processing in supported applications, replacing shading languages and simplifying their use for programmers. Two popular APIs are Compute Unified Device Architecture (CUDA) and Open Computing Language (OpenCL)\cite{Fang:Comparison-cuda-opencl}.
 
@@ -77,5 +78,5 @@ By combining these findings, our investigation aims to provide a comprehensive o
 
 
 \bibliography{zdroje}
-\bibliographystyle{alpha} % prípadne alpha, abbrv alebo hociktorý iný
+\bibliographystyle{abbrv} % prípadne alpha, abbrv alebo hociktorý iný
 \end{document}
