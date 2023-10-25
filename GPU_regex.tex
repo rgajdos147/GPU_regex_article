@@ -45,7 +45,7 @@
 
 \section{Introduction}
 
-Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{https://neovim.io/doc/user/change.html\#\%3Asubstitute}, and web scraping (the process of extracting data or information from internet sites)\cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction}, among others.
+Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping (the process of extracting data or information from internet sites)\cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction}, among others.
 
 Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages\cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
 
@@ -56,15 +56,77 @@ The processor's capacity to execute multiple expressions simultaneously is notab
 
 In recent years, GPUs with their extensive parallelism, computational capabilities, and high memory bandwidth have become prevalent in numerous computing system. They have scaled at a faster rate than CPUs, providing significant computing power\cite{sun2019summarizing,Liu:Asynchronous}. APIs were created to allow General Purpose Graphics Processing Units (GPGPU) to accelerate processing in supported applications, replacing shading languages and simplifying their use for programmers. Two popular APIs are Compute Unified Device Architecture (CUDA) and Open Computing Language (OpenCL)\cite{Fang:Comparison-cuda-opencl}.
 
-In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Regular Expressions}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
+In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
 By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}.
 
 \section{Background} \label{Background}
+A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
+Basic syntax is described as follows: characters of alphabet are matched literally, special symbols are used to match a single/multiple character matches, optional character matches, alternation, any character, line start/end and the empty string. As described in table \ref{table:regex_special_symbols}.
 
-\subsection{Regular Expressions} \label{Regular Expressions}
 
-\subsubsection{Finite Automata} \label{Finite Automata}
+% latex table of special symbols
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{ |c|c| }
+		\hline
+		\textbf{Symbol}         & \textbf{Meaning}         \\
+		\hline
+		\texttt{.}              & Any character            \\
+		\hline
+		\texttt{*}              & Zero or more matches     \\
+		\hline
+		\texttt{+}              & One or more matches      \\
+		\hline
+		\texttt{?}              & Zero or one match        \\
+		\hline
+		\texttt{|}              & Alternation              \\
+		\hline
+		\texttt{-}              & Range                    \\
+		\hline
+		\texttt{[}              & Start of character class \\
+		\hline
+		\texttt{]}              & End of character class   \\
+		\hline
+		\texttt{\textbackslash} & Escape character         \\
+		\hline
+		% \texttt{\^{}}             & Start of line            \\
+		% \hline
+		% \texttt{\$}               & End of line              \\
+		% \hline
+		% \texttt{\textbackslash b} & Word boundary            \\
+		% \hline
+		% \texttt{\textbackslash B} & Not word boundary        \\
+		% \hline
+		% \texttt{\textbackslash d} & Digit                    \\
+		% \hline
+		% \texttt{\textbackslash D} & Not digit                \\
+		% \hline
+		% \texttt{\textbackslash s} & Whitespace               \\
+		% \hline
+		% \texttt{\textbackslash S} & Not whitespace           \\
+		% \hline
+		% \texttt{\textbackslash w} & Word                     \\
+		% \hline
+		% \texttt{\textbackslash W} & Not word                 \\
+		% \hline
+		% \texttt{\textbackslash x} & Hexadecimal digit        \\
+		% \hline
+		% \texttt{\textbackslash 0} & Octal digit              \\
+		% \hline
+		% \texttt{\textbackslash n} & Newline                  \\
+		% \hline
+		% \texttt{\textbackslash r} & Carriage return          \\
+		% \hline
+		% \texttt{\textbackslash t} & Tab                      \\
+		% \hline
+	\end{tabular}
+	\caption{Regular expression special symbols, author's own work }
+	\label{table:regex_special_symbols}
+\end{table}
+\marginpar{pozriet ci uz neni dakde}
+
+\subsection{Finite Automata} \label{Finite Automata}
 
 \subsection{Parallel computing platforms} \label{Parallel computing platforms}
 

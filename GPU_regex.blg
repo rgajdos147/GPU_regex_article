@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: GPU_regex.aux
 The style file: abbrv.bst
 Database file #1: zdroje.bib
-You've used 16 entries,
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            617 strings with 7823 characters,
-and the built_in function-call counts, 7078 in all, are:
-= -- 707
-> -- 368
+            621 strings with 7965 characters,
+and the built_in function-call counts, 7293 in all, are:
+= -- 726
+> -- 375
 < -- 8
-+ -- 147
-- -- 128
-* -- 489
-:= -- 1107
-add.period$ -- 56
-call.type$ -- 16
-change.case$ -- 112
++ -- 150
+- -- 130
+* -- 497
+:= -- 1145
+add.period$ -- 59
+call.type$ -- 17
+change.case$ -- 115
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 300
-empty$ -- 508
-format.name$ -- 128
-if$ -- 1556
+cite$ -- 17
+duplicate$ -- 312
+empty$ -- 530
+format.name$ -- 130
+if$ -- 1602
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 16
-newline$ -- 83
-num.names$ -- 32
-pop$ -- 121
+int.to.str$ -- 17
+missing$ -- 18
+newline$ -- 88
+num.names$ -- 34
+pop$ -- 129
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 99
 quote$ -- 0
-skip$ -- 242
+skip$ -- 248
 stack$ -- 0
-substring$ -- 373
-swap$ -- 117
+substring$ -- 378
+swap$ -- 118
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 66
 warning$ -- 0
-while$ -- 52
-width$ -- 18
-write$ -- 193
+while$ -- 54
+width$ -- 19
+write$ -- 203

@@ -78,6 +78,12 @@ Y.~Sun, N.~B. Agostini, S.~Dong, and D.~Kaeli.
 \newblock Summarizing cpu and gpu design trends with product data.
 \newblock {\em arXiv preprint arXiv:1911.11313}, 2019.
 
+\bibitem{wang2014techniques}
+X.~Wang.
+\newblock {\em Techniques for efficient regular expression matching across
+  hardware architectures}.
+\newblock University of Missouri-Columbia, 2014.
+
 \bibitem{Xia:FSA-scaling}
 Y.~Xia, P.~Jiang, and G.~Agrawal.
 \newblock Scaling out speculative execution of finite-state machines with
