@@ -55,6 +55,14 @@ V.~W. Lee, C.~Kim, J.~Chhugani, M.~Deisher, D.~Kim, A.~D. Nguyen, N.~Satish,
   computing on cpu and gpu.
 \newblock {\em SIGARCH Comput. Archit. News}, 38(3):451–460, jun 2010.
 
+\bibitem{Liu:WhyGPUSlowNFA}
+H.~Liu, S.~Pai, and A.~Jog.
+\newblock Why gpus are slow at executing nfas and how to make them faster.
+\newblock In {\em Proceedings of the Twenty-Fifth International Conference on
+  Architectural Support for Programming Languages and Operating Systems},
+  ASPLOS '20, page 251–265, New York, NY, USA, 2020. Association for
+  Computing Machinery.
+
 \bibitem{Liu:Asynchronous}
 H.~Liu, S.~Pai, and A.~Jog.
 \newblock Asynchronous automata processing on gpus.

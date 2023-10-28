@@ -17,6 +17,10 @@
 \usepackage{wrapfig}
 % \usepackage{}
 %\usepackage{times}
+\usepackage{tikz}
+\usepackage{blindtext}
+\usetikzlibrary{automata, positioning, arrows}
+\usetikzlibrary{arrows.meta}
 
 \pagestyle{headings}
 
@@ -38,7 +42,8 @@
 \maketitle
 
 \begin{abstract}
-	\ldots
+	\blindtext[2]
+
 \end{abstract}
 
 
@@ -58,7 +63,9 @@ In recent years, GPUs with their extensive parallelism, computational capabiliti
 
 In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
-By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}.
+By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
+
+\ldots
 
 \section{Background} \label{Background}
 A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
@@ -70,56 +77,34 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 	\centering
 	\begin{tabular}{ |c|c| }
 		\hline
-		\textbf{Symbol}         & \textbf{Meaning}         \\
+		\textbf{Symbols}        & \textbf{Meaning}                 \\
 		\hline
-		\texttt{.}              & Any character            \\
+		\texttt{.}              & Any character                    \\
 		\hline
-		\texttt{*}              & Zero or more matches     \\
+		\texttt{*}              & Zero or more matches             \\
 		\hline
-		\texttt{+}              & One or more matches      \\
+		\texttt{+}              & One or more matches              \\
 		\hline
-		\texttt{?}              & Zero or one match        \\
+		\texttt{?}              & Zero or one match                \\
 		\hline
-		\texttt{|}              & Alternation              \\
+		\texttt{|}              & Alternation                      \\
 		\hline
-		\texttt{-}              & Range                    \\
+		\texttt{-}              & Range                            \\
 		\hline
-		\texttt{[}              & Start of character class \\
+		\texttt{\textbackslash} & Escape character                 \\
 		\hline
-		\texttt{]}              & End of character class   \\
+		\texttt{\^{}}           & Line start                       \\
 		\hline
-		\texttt{\textbackslash} & Escape character         \\
+		\texttt{\$}             & Line end                         \\
 		\hline
-		% \texttt{\^{}}             & Start of line            \\
-		% \hline
-		% \texttt{\$}               & End of line              \\
-		% \hline
-		% \texttt{\textbackslash b} & Word boundary            \\
-		% \hline
-		% \texttt{\textbackslash B} & Not word boundary        \\
-		% \hline
-		% \texttt{\textbackslash d} & Digit                    \\
-		% \hline
-		% \texttt{\textbackslash D} & Not digit                \\
-		% \hline
-		% \texttt{\textbackslash s} & Whitespace               \\
-		% \hline
-		% \texttt{\textbackslash S} & Not whitespace           \\
-		% \hline
-		% \texttt{\textbackslash w} & Word                     \\
-		% \hline
-		% \texttt{\textbackslash W} & Not word                 \\
-		% \hline
-		% \texttt{\textbackslash x} & Hexadecimal digit        \\
-		% \hline
-		% \texttt{\textbackslash 0} & Octal digit              \\
-		% \hline
-		% \texttt{\textbackslash n} & Newline                  \\
-		% \hline
-		% \texttt{\textbackslash r} & Carriage return          \\
-		% \hline
-		% \texttt{\textbackslash t} & Tab                      \\
-		% \hline
+		\texttt{:}              & Grouping                         \\
+		\hline
+		\texttt{[ ]}            & Start and end of character class \\
+		\hline
+		\texttt{( )}            & Start and end of group           \\
+		\hline
+		\texttt{\{ \}}          & Start and end of quantifier      \\
+		\hline
 	\end{tabular}
 	\caption{Regular expression special symbols, author's own work }
 	\label{table:regex_special_symbols}
@@ -127,14 +112,82 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 \marginpar{pozriet ci uz neni dakde}
 
 \subsection{Finite Automata} \label{Finite Automata}
+Regular expression matching is performed by using finite automata, a mathematical model of computation that abstracts computations into a finite number of states and transitions~\cite{Becchi:regex_large_dataset}. A finite automaton comprises a directed graph in which each node symbolises a state while each edge reflects a state transition.
+Two widely used representations of finite automata are deterministic finite automata (DFAs) and non-deterministic finite automata (NFAs). While NFAs and DFAs achieve the same outcome, there are some practical differences in terms of resource requirements and traversal behaviour~\cite{Nourian:DemystifyingFSA}.
+Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs ~\cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
 
-\subsection{Parallel computing platforms} \label{Parallel computing platforms}
+\tikzset{
+	->, % makes the edges directed
+	>=stealth', % makes the arrow heads bold
+	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+	initial text=$ $, % sets the text that appears on the start arrow
+}
+\begin{figure}[h!]
+	\centering
+	\scalebox{.7}[.7]{
+		\begin{tikzpicture}
+			\node[draw] at (0,2) {NFA};
+			\node[state, initial] (q0) {$q_0$};
+			\node[state, below right of=q0] (q1) {$q_1$};
+			\node[state, above right of=q0] (q2) {$q_2$};
+			\node[state, right of=q0] (q3) {$q_3$};
+			\node[state, accepting, right of=q3] (q4) {$q_4$};
+			\draw (q0) edge[loop above] node{$a$} (q0)
+			(q0) edge[right,above] node{$c$} (q3)
+			(q0) edge[left] node{$b$} (q1)
+			(q0) edge[right, above] node{$d$} (q2)
+			(q1) edge[loop above] node{$b$} (q1)
+			(q1) edge[right] node{$a$} (q3)
+			(q1) edge[below] node{$d,c$} (q4)
+			(q2) edge[loop above] node{$d$} (q1)
+			(q2) edge[right] node{$c$} (q3)
+			(q2) edge[above ] node{$a,b$} (q4)
+			(q3) edge[above] node{$a,b,d,c$} (q4)
+			(q4) edge[loop above] node{$a,b,d,c$} (q4)
+			;
+		\end{tikzpicture}
+	}
+	\scalebox{.7}[.7]{
+		\begin{tikzpicture}
+			\node[draw] at (0,3) {DFA};
+			\node[state, initial] (q0) {$q_0$};
+			\node[state, above right of=q0] (q1) {$q_1$};
+			\node[state, right of=q0] (q2) {$q_2$};
+			\node[state, accepting, right of=q2] (q3) {$q_3$};
+			\draw (q0) edge[loop above] node{$a$} (q0)
+			(q0) edge[bend right,below] node{$c$} (q3)
+			(q0) edge[left] node{$b$} (q1)
+			(q1) edge[loop above] node{$b$} (q1)
+			(q2) edge[loop above] node{$d$} (q1)
+			(q1) edge[above] node{$a$} (q3)
+			(q0) edge[right, above] node{$d$} (q2)
+			(q2) edge[right, above] node{$d$} (q3)
+			;
+		\end{tikzpicture}
+	}
+	\caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
+	\label{fig:regex_FSA}
+\end{figure}
+
+\subsubsection{Automata processing} \label{Automata processing}
+The regular expression's matching process is equivalent to a finite state machine traversal of the input stream.
+The process of matching begins with the activation of the initial states. Symbols from the input stream are sequentially utilized by the finite automaton.The process concludes once all the symbols of the input stream are processed.The incoming symbol is matched with the active states, and if it falls within the matchset of an active state, the active state transforms into a matched state ~\cite{Liu:Asynchronous}.
+
+We can guarantee worst-case performance by restricting the processing of each input character. Techniques to limit per-character processing involve enlarging the finite automaton. Therefore, the search space is determined by balancing the size of the automaton and the upper limit of per-character processing~\cite{Nourian:DemystifyingFSA}.
+
+
+\subsection{GPU \ldots} \label{GPU}
+
+\subsubsection{Parallel computing platforms} \label{Parallel computing platforms}
 
 \subsubsection{CUDA} \label{Cuda}
 
 \subsubsection{OpenCL} \label{OpenCL}
-
+\
 \section{Existing solutions} \label{Existing solutions}
+
+\section{Analysis of \ldots} \label{Analysis of }
 
 \section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
 
