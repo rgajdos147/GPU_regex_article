@@ -180,12 +180,10 @@ Similarly, an unbalanced workload across threads in a work-group will result in 
 The memory hierarchy of GPUs comprises: Global memory, a larger and slower form of memory accessible by all threads in any compute units. Constant memory, a read-only section of the global memory with a specific cache for faster memory access. Local memory, connected to compute units and shared among threads in a single unit and private memory, exclusively reserved for individual threads~\cite{yaneva2022gpuaccelerationFSA}.
 
 \subsubsection{Parallel computing platforms} \label{Parallel computing platforms}
+Due to the significant performance potential of GPUs, their  utilization has evolved from high-level shading languages to modern programming languages, reducing time and complexity involved in creating GPU-enabled applications~\cite{Asaduzzaman:Impact_CUDA_OpenCL}.
+Two of the most popular APIs for GPU programming are CUDA\footnote{\url{https://developer.nvidia.com/cuda-toolkit}} (Compute Unified Device Architectur) and OpenCL\footnote{\url{https://www.khronos.org/opencl/}} (Open Computing Language). CUDA is a proprietary API developed by NVIDIA, while OpenCL is s an open royalty-free standard developed by the Khronos Group (an open, member-driven consortium, publishing and maintaining open standarts) \footnote{\url{https://www.khronos.org/}}.
 
-
-\subsubsection{CUDA} \label{Cuda}
-
-\subsubsection{OpenCL} \label{OpenCL}
-\
+\textbf{add comparison of CUDA and OpenCL, maybe?}
 \section{Existing solutions} \label{Existing solutions}
 
 \section{Analysis of \ldots} \label{Analysis}

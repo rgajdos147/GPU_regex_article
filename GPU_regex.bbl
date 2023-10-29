@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{Asaduzzaman:Impact_CUDA_OpenCL}
+A.~Asaduzzaman, A.~Trent, S.~Osborne, C.~Aldershof, and F.~N. Sibai.
+\newblock Impact of cuda and opencl on parallel and distributed computing.
+\newblock In {\em 2021 8th International Conference on Electrical and
+  Electronics Engineering (ICEEE)}, pages 238--242, 2021.
+
 \bibitem{becchi2008workload}
 M.~Becchi, M.~Franklin, and P.~Crowley.
 \newblock A workload for evaluating deep packet inspection architectures.
@@ -105,6 +111,13 @@ C.~Xu, J.~Su, and S.~Chen.
 \newblock Exploring efficient grouping algorithms in regular expression
   matching.
 \newblock {\em PloS one}, 13(10):e0206068, 2018.
+
+\bibitem{yaneva2022gpuaccelerationFSA}
+V.~Yaneva, A.~Rajan, and C.~Dubach.
+\newblock Gpu acceleration of finite state machine input execution: Improving
+  scale and performance.
+\newblock {\em Software Testing, Verification and Reliability}, 32(1):e1796,
+  2022.
 
 \bibitem{Becchi:regex_large_dataset}
 X.~Yu and M.~Becchi.
