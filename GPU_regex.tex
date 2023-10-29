@@ -46,10 +46,7 @@
 
 \end{abstract}
 
-
-
-\section{Introduction}
-
+\section{Introduction} \label{Introduction}
 Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping (the process of extracting data or information from internet sites)\cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction}, among others.
 
 Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages\cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
@@ -63,9 +60,7 @@ In recent years, GPUs with their extensive parallelism, computational capabiliti
 
 In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
-By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
-
-\ldots
+By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}and \ref{Analysis}. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
 
 \section{Background} \label{Background}
 A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
@@ -169,17 +164,23 @@ Although deterministic finite automata (DFAs) have a simpler transition system, 
 	\caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
 	\label{fig:regex_FSA}
 \end{figure}
-
 \subsubsection{Automata processing} \label{Automata processing}
 The regular expression's matching process is equivalent to a finite state machine traversal of the input stream.
 The process of matching begins with the activation of the initial states. Symbols from the input stream are sequentially utilized by the finite automaton.The process concludes once all the symbols of the input stream are processed.The incoming symbol is matched with the active states, and if it falls within the matchset of an active state, the active state transforms into a matched state ~\cite{Liu:Asynchronous}.
 
 We can guarantee worst-case performance by restricting the processing of each input character. Techniques to limit per-character processing involve enlarging the finite automaton. Therefore, the search space is determined by balancing the size of the automaton and the upper limit of per-character processing~\cite{Nourian:DemystifyingFSA}.
 
+\subsection{Graphics Processing Unit} \label{GPU}
+The GPU, or Graphics Processing Unit, offers significantly higher instruction throughput and memory bandwidth than the CPU at a comparable price and power consumption.
+While the CPU is optimized for rapid execution of a sequence of operations referred to as a "thread" and can execute dozens of these threads concurrently, the GPU is optimized for thousands of parallel executions (offsetting the slower single-thread performance for increased throughput).This variation in capabilities is a result of differing design objectives for the GPU and CPU.\footnote{From \url{https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html}}
 
-\subsection{GPU \ldots} \label{GPU}
+All threads within a compute unit share a common instruction counter. Execution of a single compute unit occurs in lock-step, whereby each thread executes the same instruction when directed to do so. When control flow divergence occurs between threads within the same work group, divergent instructions are serialised,which can negatively impact performance.
+Similarly, an unbalanced workload across threads in a work-group will result in idle threads, which reduces performance~\cite{yaneva2022gpuaccelerationFSA}.
+
+The memory hierarchy of GPUs comprises: Global memory, a larger and slower form of memory accessible by all threads in any compute units. Constant memory, a read-only section of the global memory with a specific cache for faster memory access. Local memory, connected to compute units and shared among threads in a single unit and private memory, exclusively reserved for individual threads~\cite{yaneva2022gpuaccelerationFSA}.
 
 \subsubsection{Parallel computing platforms} \label{Parallel computing platforms}
+
 
 \subsubsection{CUDA} \label{Cuda}
 
@@ -187,7 +188,7 @@ We can guarantee worst-case performance by restricting the processing of each in
 \
 \section{Existing solutions} \label{Existing solutions}
 
-\section{Analysis of \ldots} \label{Analysis of }
+\section{Analysis of \ldots} \label{Analysis}
 
 \section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
 
