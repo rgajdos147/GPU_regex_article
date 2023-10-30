@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.30)  30 OCT 2023 14:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.30)  30 OCT 2023 14:10
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -603,7 +603,7 @@ Package rerunfilecheck Info: File `GPU_regex.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  23251 strings out of 477985
- 453684 string characters out of 5839379
+ 453678 string characters out of 5839379
  1873388 words of memory out of 6000000
  43017 multiletter control sequences out of 15000+600000
  526938 words of font info for 69 fonts, out of 8000000 for 9000
