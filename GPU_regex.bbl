@@ -3,71 +3,52 @@
 \bibitem{Asaduzzaman:Impact_CUDA_OpenCL}
 A.~Asaduzzaman, A.~Trent, S.~Osborne, C.~Aldershof, and F.~N. Sibai.
 \newblock Impact of cuda and opencl on parallel and distributed computing.
-\newblock In {\em 2021 8th International Conference on Electrical and
-  Electronics Engineering (ICEEE)}, pages 238--242, 2021.
+\newblock In {\em 2021 8th International Conference on Electrical and Electronics Engineering (ICEEE)}, pages 238--242, 2021.
 
 \bibitem{becchi2008workload}
 M.~Becchi, M.~Franklin, and P.~Crowley.
 \newblock A workload for evaluating deep packet inspection architectures.
-\newblock In {\em 2008 IEEE International Symposium on Workload
-  Characterization}, pages 79--89. IEEE, 2008.
+\newblock In {\em 2008 IEEE International Symposium on Workload Characterization}, pages 79--89. IEEE, 2008.
 
 \bibitem{Chapman:Usage}
 C.~Chapman and K.~T. Stolee.
 \newblock Exploring regular expression usage and context in python.
-\newblock In {\em Proceedings of the 25th International Symposium on Software
-  Testing and Analysis}, ISSTA 2016, page 282–293, New York, NY, USA, 2016.
-  Association for Computing Machinery.
+\newblock In {\em Proceedings of the 25th International Symposium on Software Testing and Analysis}, ISSTA 2016, page 282–293, New York, NY, USA, 2016. Association for Computing Machinery.
 
 \bibitem{Davis:Re-use}
 J.~C. Davis, L.~G. Michael~IV, C.~A. Coghlan, F.~Servant, and D.~Lee.
-\newblock Why aren’t regular expressions a lingua franca? an empirical study
-  on the re-use and portability of regular expressions.
-\newblock In {\em Proceedings of the 2019 27th ACM Joint Meeting on European
-  Software Engineering Conference and Symposium on the Foundations of Software
-  Engineering}, ESEC/FSE 2019, page 443–454, New York, NY, USA, 2019.
-  Association for Computing Machinery.
+\newblock Why aren’t regular expressions a lingua franca? an empirical study on the re-use and portability of regular expressions.
+\newblock In {\em Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering}, ESEC/FSE 2019, page 443–454, New York, NY, USA, 2019. Association for Computing Machinery.
 
 \bibitem{Fang:Comparison-cuda-opencl}
 J.~Fang, A.~L. Varbanescu, and H.~Sips.
 \newblock A comprehensive performance comparison of cuda and opencl.
-\newblock In {\em 2011 International Conference on Parallel Processing}, pages
-  216--225, 2011.
+\newblock In {\em 2011 International Conference on Parallel Processing}, pages 216--225, 2011.
 
 \bibitem{fuchs2019accelerator}
 A.~Fuchs and D.~Wentzlaff.
 \newblock The accelerator wall: Limits of chip specialization.
-\newblock In {\em 2019 IEEE International Symposium on High Performance
-  Computer Architecture (HPCA)}, pages 1--14. IEEE, 2019.
+\newblock In {\em 2019 IEEE International Symposium on High Performance Computer Architecture (HPCA)}, pages 1--14. IEEE, 2019.
 
 \bibitem{Gunawan2019/03}
 R.~Gunawan, A.~Rahmatulloh, I.~Darmawan, and F.~Firdaus.
-\newblock Comparison of web scraping techniques : Regular expression, html dom
-  and xpath.
-\newblock In {\em Proceedings of the 2018 International Conference on
-  Industrial Enterprise and System Engineering (IcoIESE 2018)}, pages 283--287.
-  Atlantis Press, 2019/03.
+\newblock Comparison of web scraping techniques : Regular expression, html dom and xpath.
+\newblock In {\em Proceedings of the 2018 International Conference on Industrial Enterprise and System Engineering (IcoIESE 2018)}, pages 283--287. Atlantis Press, 2019/03.
 
 \bibitem{István:databases-regex}
 Z.~István, D.~Sidler, and G.~Alonso.
 \newblock Runtime parameterizable regular expression operators for databases.
-\newblock In {\em 2016 IEEE 24th Annual International Symposium on
-  Field-Programmable Custom Computing Machines (FCCM)}, pages 204--211, 2016.
+\newblock In {\em 2016 IEEE 24th Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)}, pages 204--211, 2016.
 
 \bibitem{Lee:myths}
-V.~W. Lee, C.~Kim, J.~Chhugani, M.~Deisher, D.~Kim, A.~D. Nguyen, N.~Satish,
-  M.~Smelyanskiy, S.~Chennupaty, P.~Hammarlund, R.~Singhal, and P.~Dubey.
-\newblock Debunking the 100x gpu vs. cpu myth: An evaluation of throughput
-  computing on cpu and gpu.
+V.~W. Lee, C.~Kim, J.~Chhugani, M.~Deisher, D.~Kim, A.~D. Nguyen, N.~Satish, M.~Smelyanskiy, S.~Chennupaty, P.~Hammarlund, R.~Singhal, and P.~Dubey.
+\newblock Debunking the 100x gpu vs. cpu myth: An evaluation of throughput computing on cpu and gpu.
 \newblock {\em SIGARCH Comput. Archit. News}, 38(3):451–460, jun 2010.
 
 \bibitem{Liu:WhyGPUSlowNFA}
 H.~Liu, S.~Pai, and A.~Jog.
 \newblock Why gpus are slow at executing nfas and how to make them faster.
-\newblock In {\em Proceedings of the Twenty-Fifth International Conference on
-  Architectural Support for Programming Languages and Operating Systems},
-  ASPLOS '20, page 251–265, New York, NY, USA, 2020. Association for
-  Computing Machinery.
+\newblock In {\em Proceedings of the Twenty-Fifth International Conference on Architectural Support for Programming Languages and Operating Systems}, ASPLOS '20, page 251–265, New York, NY, USA, 2020. Association for Computing Machinery.
 
 \bibitem{Liu:Asynchronous}
 H.~Liu, S.~Pai, and A.~Jog.
@@ -77,14 +58,11 @@ H.~Liu, S.~Pai, and A.~Jog.
 \bibitem{Nourian:DemystifyingFSA}
 M.~Nourian, X.~Wang, X.~Yu, W.-c. Feng, and M.~Becchi.
 \newblock Demystifying automata processing: Gpus, fpgas or micron's ap?
-\newblock In {\em Proceedings of the International Conference on
-  Supercomputing}, ICS '17, New York, NY, USA, 2017. Association for Computing
-  Machinery.
+\newblock In {\em Proceedings of the International Conference on Supercomputing}, ICS '17, New York, NY, USA, 2017. Association for Computing Machinery.
 
 \bibitem{prieto2014prediction}
 G.~Prieto, A.~Fullaondo, and J.~A. Rodriguez.
-\newblock Prediction of nuclear export signals using weighted regular
-  expressions (wregex).
+\newblock Prediction of nuclear export signals using weighted regular expressions (wregex).
 \newblock {\em Bioinformatics}, 30(9):1220--1227, 2014.
 
 \bibitem{sun2019summarizing}
@@ -94,43 +72,32 @@ Y.~Sun, N.~B. Agostini, S.~Dong, and D.~Kaeli.
 
 \bibitem{wang2014techniques}
 X.~Wang.
-\newblock {\em Techniques for efficient regular expression matching across
-  hardware architectures}.
+\newblock {\em Techniques for efficient regular expression matching across hardware architectures}.
 \newblock University of Missouri-Columbia, 2014.
 
 \bibitem{Xia:FSA-scaling}
 Y.~Xia, P.~Jiang, and G.~Agrawal.
-\newblock Scaling out speculative execution of finite-state machines with
-  parallel merge.
-\newblock In {\em Proceedings of the 25th ACM SIGPLAN Symposium on Principles
-  and Practice of Parallel Programming}, PPoPP '20, page 160–172, New York,
-  NY, USA, 2020. Association for Computing Machinery.
+\newblock Scaling out speculative execution of finite-state machines with parallel merge.
+\newblock In {\em Proceedings of the 25th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming}, PPoPP '20, page 160–172, New York, NY, USA, 2020. Association for Computing Machinery.
 
 \bibitem{XU:regex_alg_slow}
 C.~Xu, J.~Su, and S.~Chen.
-\newblock Exploring efficient grouping algorithms in regular expression
-  matching.
+\newblock Exploring efficient grouping algorithms in regular expression matching.
 \newblock {\em PloS one}, 13(10):e0206068, 2018.
 
 \bibitem{yaneva2022gpuaccelerationFSA}
 V.~Yaneva, A.~Rajan, and C.~Dubach.
-\newblock Gpu acceleration of finite state machine input execution: Improving
-  scale and performance.
-\newblock {\em Software Testing, Verification and Reliability}, 32(1):e1796,
-  2022.
+\newblock Gpu acceleration of finite state machine input execution: Improving scale and performance.
+\newblock {\em Software Testing, Verification and Reliability}, 32(1):e1796, 2022.
 
 \bibitem{Becchi:regex_large_dataset}
 X.~Yu and M.~Becchi.
-\newblock Gpu acceleration of regular expression matching for large datasets:
-  Exploring the implementation space.
-\newblock In {\em Proceedings of the ACM International Conference on Computing
-  Frontiers}, CF '13, New York, NY, USA, 2013. Association for Computing
-  Machinery.
+\newblock Gpu acceleration of regular expression matching for large datasets: Exploring the implementation space.
+\newblock In {\em Proceedings of the ACM International Conference on Computing Frontiers}, CF '13, New York, NY, USA, 2013. Association for Computing Machinery.
 
 \bibitem{Zu:GPU-NFA}
 Y.~Zu, M.~Yang, Z.~Xu, L.~Wang, X.~Tian, K.~Peng, and Q.~Dong.
-\newblock Gpu-based nfa implementation for memory efficient high speed regular
-  expression matching.
+\newblock Gpu-based nfa implementation for memory efficient high speed regular expression matching.
 \newblock {\em SIGPLAN Not.}, 47(8):129–140, feb 2012.
 
 \end{thebibliography}

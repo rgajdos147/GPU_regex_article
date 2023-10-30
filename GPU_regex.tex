@@ -60,7 +60,7 @@ In recent years, GPUs with their extensive parallelism, computational capabiliti
 
 In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
-By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions}and \ref{Analysis}. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
+By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Existing solutions} and \ref{Analysis}. Result from this was evaluated in the \ref{Results} and \ref{Discussion} sections. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
 
 \section{Background} \label{Background}
 A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
@@ -184,9 +184,16 @@ Due to the significant performance potential of GPUs, their  utilization has evo
 Two of the most popular APIs for GPU programming are CUDA\footnote{\url{https://developer.nvidia.com/cuda-toolkit}} (Compute Unified Device Architectur) and OpenCL\footnote{\url{https://www.khronos.org/opencl/}} (Open Computing Language). CUDA is a proprietary API developed by NVIDIA, while OpenCL is s an open royalty-free standard developed by the Khronos Group (an open, member-driven consortium, publishing and maintaining open standarts) \footnote{\url{https://www.khronos.org/}}.
 
 \textbf{add comparison of CUDA and OpenCL, maybe?}
-\section{Existing solutions} \label{Existing solutions}
 
-\section{Analysis of \ldots} \label{Analysis}
+\section{Related Work} \label{Existing solutions}
+
+\section{Objective and methodology} \label{Objective}
+
+\section{Analysis} \label{Analysis}
+
+\section{Results} \label{Results}
+
+\section{Discussion} \label{Discussion}
 
 \section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
 
