@@ -47,7 +47,7 @@
 \end{abstract}
 
 \section{Introduction} \label{Introduction}
-Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping (the process of extracting data or information from internet sites)\cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction}, among others.
+Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping \cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction,huang2008gpu}, among others.
 
 Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages\cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
 
@@ -183,9 +183,16 @@ The memory hierarchy of GPUs comprises: Global memory, a larger and slower form 
 Due to the significant performance potential of GPUs, their  utilization has evolved from high-level shading languages to modern programming languages, reducing time and complexity involved in creating GPU-enabled applications~\cite{Asaduzzaman:Impact_CUDA_OpenCL}.
 Two of the most popular APIs for GPU programming are CUDA\footnote{\url{https://developer.nvidia.com/cuda-toolkit}} (Compute Unified Device Architecture) and OpenCL\footnote{\url{https://www.khronos.org/opencl/}} (Open Computing Language). CUDA is a proprietary API developed by NVIDIA, while OpenCL is s an open royalty-free standard developed by the Khronos Group (an open, member-driven consortium, publishing and maintaining open standarts) \footnote{\url{https://www.khronos.org/}}.
 
-\textbf{add comparison of CUDA and OpenCL, maybe?}
+OpenCL provides an efficient and portable way to access the power of different computing platforms. However, when comparing OpenCL to CUDA, there are sometimes performance differences. These differences are often attributed to the portability of OpenCL, which can lead to performance degradation. However, in a fair comparison, there is no inherent reason for OpenCL to perform worse than CUDA. Performance differences are primarily due to programmers and compilers behaviour\cite{Fang:Comparison-cuda-opencl}.
 
 \section{Related Work} \label{Related work}
+Research into the use of GPUs for regular expression matching started with the publications "Fast Exact String Matching on the GPU"\cite{schatz2007fast} and "A GPU-based Multiple-pattern Matching Algorithm for Network Intrusion
+Detection Systems"\cite{huang2008gpu}. Their pioneering studies introduced a string matching program and multiple-pattern matching algorithm designed to take advantage of GPU processing capabilities.
+
+This work was soon followed by "Accelerating Regular Expression Matching Using Hierarchical Parallel Machines on GPU"\cite{Lin:regex_gpu_parallel} and "GPU-based NFA Implementation for Memory Efficient High Speed Regular Expression Matching"\cite{Zu:GPU-NFA}. These two studies provide solutions to the performance challenges linked to regular expression matching in the context of network intrusion detection and other network functions.
+
+Afterwards, a large, comprehensive study entitled "GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space"\cite{Becchi:regex_large_dataset} was published. The study examines regular expression matching on GPUs, focusing on practical-sized and complex datasets. It explores the advantages and limitations of different automata representations and various GPU implementation techniques.
+
 
 \section{Objective and methodology} \label{Objective}
 
