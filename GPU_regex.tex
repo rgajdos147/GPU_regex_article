@@ -19,10 +19,13 @@
 %\usepackage{times}
 \usepackage{tikz}
 \usepackage{blindtext}
+% \usepackage[parfill]{parskip}
 \usetikzlibrary{automata, positioning, arrows}
 \usetikzlibrary{arrows.meta}
 
+\usepackage{indentfirst}
 \pagestyle{headings}
+% \setlength{\parskip}{0pt}
 
 \title{Overview and Analysis of GPU Acceleration for Regular Expressions
 \thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -60,7 +63,7 @@ In recent years, GPUs with their extensive parallelism, computational capabiliti
 
 In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
-By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Related work} and \ref{Analysis}. Result from this was evaluated in the \ref{Results} and \ref{Discussion} sections. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
+By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Related work} and \ref{Analysis}. Result from this was evaluated in the \ref{Results} section. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
 
 \section{Background} \label{Background}
 A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
@@ -188,19 +191,21 @@ OpenCL provides an efficient and portable way to access the power of different c
 \section{Related Work} \label{Related work}
 Research into the use of GPUs for regular expression matching started with the publications "Fast Exact String Matching on the GPU"\cite{schatz2007fast} and "A GPU-based Multiple-pattern Matching Algorithm for Network Intrusion
 Detection Systems"\cite{huang2008gpu}. Their pioneering studies introduced a string matching program and multiple-pattern matching algorithm designed to take advantage of GPU processing capabilities.
-
 This work was soon followed by "Accelerating Regular Expression Matching Using Hierarchical Parallel Machines on GPU"\cite{Lin:regex_gpu_parallel} and "GPU-based NFA Implementation for Memory Efficient High Speed Regular Expression Matching"\cite{Zu:GPU-NFA}. These two studies provide solutions to the performance challenges linked to regular expression matching in the context of network intrusion detection and other network functions.
 
 Afterwards, a large, comprehensive study entitled "GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space"\cite{Becchi:regex_large_dataset} was published. The study examines regular expression matching on GPUs, focusing on practical-sized and complex datasets. It explores the advantages and limitations of different automata representations and various GPU implementation techniques.
 
+Later, studies were published dealing with speeding up the processing of finite state machines. Papers "Scaling Out Speculative Execution of Finite-State Machines with Parallel Merge"\cite{Xia:FSA-scaling} and "On-the-Fly Principled Speculation for FSM Parallelization"\cite{zhao2015fly} introduce a speculative execution technique for finite state machines. "Why GPUs are Slow at Executing NFAs and How to Make them Faster"\cite{Liu:WhyGPUSlowNFA} proposed and evaluated optimisations to improve the throughput of NFA processing on GPUs by addresing tackle suboptimal data movement and underutilisation.
+"Asynchronous Automata Processing on GPUs"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
+\marginpar{GPU acceleration of finite state machine input execution:
+	Improving scale and performance.
+	nieco o CUDA/OPENCL}
 
 \section{Objective and methodology} \label{Objective}
 
 \section{Analysis} \label{Analysis}
 
-\section{Results} \label{Results}
-
-\section{Discussion} \label{Discussion}
+\section{Results and discussion} \label{Results}
 
 \section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
 
