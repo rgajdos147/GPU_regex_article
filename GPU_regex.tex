@@ -22,10 +22,13 @@
 % \usepackage[parfill]{parskip}
 \usetikzlibrary{automata, positioning, arrows}
 \usetikzlibrary{arrows.meta}
-
+% \usepackage{pgfplots} 
 \usepackage{indentfirst}
 \pagestyle{headings}
 % \setlength{\parskip}{0pt}
+
+% \usepgfplotslibrary{external}
+% \tikzexternalize
 
 \title{Overview and Analysis of GPU Acceleration for Regular Expressions
 \thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -50,7 +53,7 @@
 \end{abstract}
 
 \section{Introduction} \label{Introduction}
-Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping \cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{prieto2014prediction,huang2008gpu}, among others.
+Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping \cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{huang2008gpu}, among others.
 
 Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages\cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
 
@@ -64,6 +67,13 @@ In recent years, GPUs with their extensive parallelism, computational capabiliti
 In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
 
 By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Related work} and \ref{Analysis}. Result from this was evaluated in the \ref{Results} section. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
+
+\section{Objective and methodology} \label{Objective}
+At present, we are unaware of any comprehensive analysis of the available materials on the acceleration of regular expressions on GPU. We have therefore decided to review the available data to see if there are any conflicting statements or claims that have evolved over time or are no longer valid. The outcome ought to be an in-depth, up-to-date article showing when to use GPU regular expression acceleration, what its benefits are, and when other solutions are better.
+
+In this research, we will compare data from papers on or relevant to this topic and look at how the results have changed over time. We will also look at the various methods of accelerating regular expressions on GPUs and compare their strengths and weaknesses.
+We will maintain an unbiased perspective and present information in a clear and concise manner. Technical terminology will be firstly explained in separate section.
+
 
 \section{Background} \label{Background}
 A regular expression, or regex for short, represents a set of exactly matching strings of characters and special symbols. This set can be infinite. The string of characters is then matched against the pattern to see if it matches. Regular expressions can be constructed in several ways~\cite{wang2014techniques}. The most common is to use a formal language, such as the one in POSIX standard\footnote{\url{https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html}}.
@@ -107,21 +117,20 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 	\caption{Regular expression special symbols, author's own work }
 	\label{table:regex_special_symbols}
 \end{table}
-\marginpar{pozriet ci uz neni dakde}
 
 \subsection{Finite Automata} \label{Finite Automata}
 Regular expression matching is performed by using finite automata, a mathematical model of computation that abstracts computations into a finite number of states and transitions~\cite{Becchi:regex_large_dataset}. A finite automaton comprises a directed graph in which each node symbolises a state while each edge reflects a state transition.
 Two widely used representations of finite automata are deterministic finite automata (DFAs) and non-deterministic finite automata (NFAs). While NFAs and DFAs achieve the same outcome, there are some practical differences in terms of resource requirements and traversal behaviour~\cite{Nourian:DemystifyingFSA}.
 Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs ~\cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
 
-\tikzset{
-	->, % makes the edges directed
-	>=stealth', % makes the arrow heads bold
-	node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-	every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
-	initial text=$ $, % sets the text that appears on the start arrow
-}
 \begin{figure}[h!]
+	\tikzset{
+		->, % makes the edges directed
+		>=stealth', % makes the arrow heads bold
+		node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+		every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+		initial text=$ $, % sets the text that appears on the start arrow
+	}
 	\centering
 	\scalebox{.7}[.7]{
 		\begin{tikzpicture}
@@ -167,6 +176,7 @@ Although deterministic finite automata (DFAs) have a simpler transition system, 
 	\caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
 	\label{fig:regex_FSA}
 \end{figure}
+
 \subsubsection{Automata processing} \label{Automata processing}
 The regular expression's matching process is equivalent to a finite state machine traversal of the input stream.
 The process of matching begins with the activation of the initial states. Symbols from the input stream are sequentially utilized by the finite automaton.The process concludes once all the symbols of the input stream are processed.The incoming symbol is matched with the active states, and if it falls within the matchset of an active state, the active state transforms into a matched state ~\cite{Liu:Asynchronous}.
@@ -195,15 +205,20 @@ This work was soon followed by "Accelerating Regular Expression Matching Using H
 
 Afterwards, a large, comprehensive study entitled "GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space"\cite{Becchi:regex_large_dataset} was published. The study examines regular expression matching on GPUs, focusing on practical-sized and complex datasets. It explores the advantages and limitations of different automata representations and various GPU implementation techniques.
 
+In the paper "Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?"\cite{Nourian:DemystifyingFSA}, the authors compare the performance of GPUs, FPGAs, and Micron's Automata Processor (AP) for regular expression matching.
+
 Later, studies were published dealing with speeding up the processing of finite state machines. Papers "Scaling Out Speculative Execution of Finite-State Machines with Parallel Merge"\cite{Xia:FSA-scaling} and "On-the-Fly Principled Speculation for FSM Parallelization"\cite{zhao2015fly} introduce a speculative execution technique for finite state machines. "Why GPUs are Slow at Executing NFAs and How to Make them Faster"\cite{Liu:WhyGPUSlowNFA} proposed and evaluated optimisations to improve the throughput of NFA processing on GPUs by addresing tackle suboptimal data movement and underutilisation.
 "Asynchronous Automata Processing on GPUs"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
+
 \marginpar{GPU acceleration of finite state machine input execution:
 	Improving scale and performance.
 	nieco o CUDA/OPENCL}
 
-\section{Objective and methodology} \label{Objective}
+
 
 \section{Analysis} \label{Analysis}
+
+
 
 \section{Results and discussion} \label{Results}
 
