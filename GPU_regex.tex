@@ -23,15 +23,13 @@
 \usetikzlibrary{automata, positioning, arrows}
 \usetikzlibrary{arrows.meta}
 \usepackage{pgfplots} 
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{external}
-\tikzexternalize
 \usepackage{indentfirst}
 \pagestyle{headings}
 % \setlength{\parskip}{0pt}
 
-% \usepgfplotslibrary{external}
-% \tikzexternalize
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{external}
+\tikzexternalize
 
 \title{Overview and Analysis of GPU Acceleration for Regular Expressions
 \thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -56,18 +54,18 @@
 \end{abstract}
 
 \section{Introduction} \label{Introduction}
-Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, and web scraping \cite{Gunawan2019/03} to network security, such as deep packet inspection\cite{becchi2008workload}, and bioinformatics\cite{huang2008gpu}, among others.
+Pattern matching is widely used in a variety of different domains. Regular expressions have become a prevalent tool for text processing and sanitation due to their flexibility, conciseness, and vast support in most programming languages\cite{Chapman:Usage}. They appear in approximately a third of open-source projects\cite{Davis:Re-use}. They are employed in technical fields, ranging from database querying\cite{István:databases-regex}, texts editors\footnote{\url{https://neovim.io/doc/user/change.html\#\%3Asubstitute}}, web scraping \cite{Gunawan2019/03} to network security, such as deep packet inspection \cite{becchi2008workload}, and bioinformatics \cite{huang2008gpu}, among others.
 
-Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages\cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
+Regular expressions are implemented using finite automata, in either deterministic (DFA) or non-deterministic (NFA) form, each with their respective advantages and drawbacks. Each of them has their own advantages and disadvantages \cite{Becchi:regex_large_dataset,Nourian:DemystifyingFSA,Zu:GPU-NFA}.
 
 In many applications, regular expressions are applied to large amounts of input data, or require a fast response, or both. It stands to reason that efficiency in both memory and speed is the key to optimal use\cite{Xia:FSA-scaling}.
 Here, the question is how to achieve the greatest possible efficiency for a given problem that is addressed by the regular expressions.
 
-The processor's capacity to execute multiple expressions simultaneously is notably restricted, even in the current era of multicore processors\cite{Lee:myths}. However, its frequency and cache memory speed prove excellent for handling small datasets. For tasks that require more extensive parallelism, FPGAs (Field-Programmable Gate Arrays) or ASICs (Application-Specific Integrated Circuits) have been used. The problem is that they are slow to configure\cite{XU:regex_alg_slow} and inflexible to change\cite{fuchs2019accelerator,Liu:Asynchronous}.
+The processor's capacity to execute multiple expressions simultaneously is notably restricted, even in the current era of multicore processors\cite{Lee:myths}. However, its frequency and cache memory speed prove excellent for handling small datasets. For tasks that require more extensive parallelism, FPGAs (Field-Programmable Gate Arrays) or ASICs (Application-Specific Integrated Circuits) have been used. The problem is that they are slow to configure\cite{XU:regex_alg_slow} and inflexible to change \cite{fuchs2019accelerator,Liu:Asynchronous}.
 
 In recent years, GPUs with their extensive parallelism, computational capabilities, and high memory bandwidth have become prevalent in numerous computing system. They have scaled at a faster rate than CPUs, providing significant computing power\cite{sun2019summarizing,Liu:Asynchronous}. APIs were created to allow General Purpose Graphics Processing Units (GPGPU) to accelerate processing in supported applications, replacing shading languages and simplifying their use for programmers. Two popular APIs are Compute Unified Device Architecture (CUDA) and Open Computing Language (OpenCL)\cite{Fang:Comparison-cuda-opencl}.
 
-In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in ~\ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in ~\ref{Parallel computing platforms}.
+In this paper, we investigate a variety of GPU-based regular expression execution methods and conduct a comparative analysis of their strengths and weaknesses. Our research begins with a thorough examination of regular expressions in~\ref{Background}. This is followed by a comparison of their representations of finite state automata forms in \ref{Finite Automata}. We then move into parallel computing platforms, such as CUDA and OpenCL in \ref{Parallel computing platforms}.
 
 By combining these findings, our investigation aims to provide a comprehensive overview of GPU-accelerated regular expressions, utilizing previous studies to provide an in-depth comparative analysis in section ~\ref{Related work} and \ref{Analysis}. Result from this was evaluated in the \ref{Results} section. Finally, we conclude with a summary of our findings in section ~\ref{Conclusions}.
 
@@ -122,9 +120,9 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 \end{table}
 
 \subsection{Finite Automata} \label{Finite Automata}
-Regular expression matching is performed by using finite automata, a mathematical model of computation that abstracts computations into a finite number of states and transitions~\cite{Becchi:regex_large_dataset}. A finite automaton comprises a directed graph in which each node symbolises a state while each edge reflects a state transition.
-Two widely used representations of finite automata are deterministic finite automata (DFAs) and non-deterministic finite automata (NFAs). While NFAs and DFAs achieve the same outcome, there are some practical differences in terms of resource requirements and traversal behaviour~\cite{Nourian:DemystifyingFSA}.
-Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs ~\cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
+Regular expression matching is performed by using finite automata, a mathematical model of computation that abstracts computations into a finite number of states and transitions \cite{Becchi:regex_large_dataset}. A finite automaton comprises a directed graph in which each node symbolises a state while each edge reflects a state transition.
+Two widely used representations of finite automata are deterministic finite automata (DFAs) and non-deterministic finite automata (NFAs). While NFAs and DFAs achieve the same outcome, there are some practical differences in terms of resource requirements and traversal behaviour \cite{Nourian:DemystifyingFSA}.
+Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs \cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
 
 \begin{figure}[h!]
   \tikzset{
@@ -182,9 +180,11 @@ Although deterministic finite automata (DFAs) have a simpler transition system, 
 
 \subsubsection{Automata processing} \label{Automata processing}
 The regular expression's matching process is equivalent to a finite state machine traversal of the input stream.
-The process of matching begins with the activation of the initial states. Symbols from the input stream are sequentially utilized by the finite automaton.The process concludes once all the symbols of the input stream are processed.The incoming symbol is matched with the active states, and if it falls within the matchset of an active state, the active state transforms into a matched state ~\cite{Liu:Asynchronous}.
+The process of matching begins with the activation of the initial states. Symbols from the input stream are sequentially utilized by the finite automaton.The process concludes once all the symbols of the input stream are processed.The incoming symbol is matched with the active states, and if it falls within the matchset of an active state, the active state transforms into a matched state \cite{Liu:Asynchronous}.
 
-We can guarantee worst-case performance by restricting the processing of each input character. Techniques to limit per-character processing involve enlarging the finite automaton. Therefore, the search space is determined by balancing the size of the automaton and the upper limit of per-character processing~\cite{Nourian:DemystifyingFSA}.
+We can guarantee worst-case performance by restricting the processing of each input character. Techniques to limit per-character processing involve enlarging the finite automaton. Therefore, the search space is determined by balancing the size of the automaton and the upper limit of per-character processing \cite{Nourian:DemystifyingFSA}.
+
+The benefit of using NFA is its capability to construct an NFA consisting of states that are less than or equal to the number of characters in the pattern-set. This makes the representation compact. The primary deficiency of NFAs lies in their traversal, during which the number of active states can vary from iteration to iteration, as well as the amount of work performed\cite{Becchi:regex_large_dataset}.
 
 \subsection{Graphics Processing Unit} \label{GPU}
 The GPU, or Graphics Processing Unit, offers significantly higher instruction throughput and memory bandwidth than the CPU at a comparable price and power consumption.
@@ -219,15 +219,13 @@ Later, studies were published dealing with speeding up the processing of finite 
 
 \section{Analysis} \label{Analysis}
 \subsection{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space} \label{Becchi:regex_large_dataset_analysis}
-This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to make relevant measurements using real-life data. The measurements were conducted using NFA design by \cite{cascarano2010infant}, along with their optimised NFA, and DFA design by \cite{becchi2007improved}, including their optimised versions.
+This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to make relevant measurements using real-life data. The measurements were conducted using NFA design by \cite{cascarano2010infant}, along with their optimised NFA; and DFA design by \cite{becchi2007improved}, in uncompressed (U-DFA), compressed (C-DFA), and optimized (E-DFA) forms.
 
-Their dataset used both real and synthetic pattern sets.The real patterns were taken from Snort's backdoor and spyware rules. The synthetic sets were generated using a tool described in \cite{becchi2008workload} and tokens from the backdoor rules.
+Their dataset used both real and synthetic pattern sets. The real patterns were taken from Snort's backdoor and spyware rules. The synthetic sets were generated using a tool described in \cite{becchi2008workload} and tokens from the backdoor rules.
 
-Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 480 GPU, using CentOS 5.5 and CUDA 4.
-\subsubsection{Results}
-
-
-
+Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA \marginpar{CUDA cores maybe} GTX 480 GPU, using CentOS 5.5 and CUDA 4.
+\subsubsection{Findings}
+The repetition of wildcards and large character sets can lead to a state explosion when converting an NFA to a DFA. On the chart \ref{dfas_size:becchi}, we can see size of DFAs in MB. In contrast, NFAs are consistently less than 1 MB in size. For synthetic datasets, the uncompressed DFA representation has 40-50 times the memory requirement of its compressed counterpart. At the time of writing, the Dotstar.2 datasets exceed the device memory capacity when uncompressed-DFA representation is utilized.
 \begin{figure}[h!]
   \centering
   % \scalebox{.9}[.9]{
@@ -272,27 +270,35 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
           (2, 592)
           (3, 1600)
         };
-      \legend{U-DFA, C-DFA, E-DFA}
+      \legend{C-DFA, E-DFA, U-DFA}
     \end{axis}
   \end{tikzpicture}
   \caption{Scaling of DFAs size, author's own work}
   \label{dfas_size:becchi}
 \end{figure}
 
-% graph of speed up of GPU over CPU
-% NFA	U-DFA	E-DFA
-% Backdoor	94	21.69620253	5.392405063
-% Spyware	51.55555556	42.05	7.95
-% Range1	5.244897959	5.846153846	5.846153846
-% Dotstar.1	28.88888889	30.40384615	5.807692308
-% Dotstar.2	40		8.21875
+As shown in chart \ref{speed NFA/DFA:becchi}, the U-DFA is the optimal solution for all pattern-sets, when applicable. However, this solution has high memory requirements and cannot be applied to complex pattern-sets due to a lack of graphics card memory.
+E-DFA offers a reasonable trade-off between U-DFA and C-DFA, resulting in a 3-5 times enhancement in speed compared to C-DFA at the expense of almost 1.5X more memory usage. Moreover, E-DFA performs better than NFA solutions on nearly all datasets.
+
+\begin{figure}[h!]
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+
+  \end{tikzpicture}
+  \caption{something about Speed NFA/DFA, author's own work}
+  \label{speed NFA/DFA:becchi}
+\end{figure}
+
+As shown in chart \ref{speedup:becchi}, both GPU implementations based on NFA and DFA algorithms outperformed their CPU equivalent.
+
 \begin{figure}[h!]
   \centering
   % \scalebox{.9}[.9]{
   \begin{tikzpicture}
     \begin{axis}[
         ylabel=Speed up,
-        xlabel=Pattern set,
+        xlabel=Dataset,
         enlargelimits={abs=0.4},
         legend style={at={(0.5,1)},
             anchor=north,legend columns=3},
@@ -344,6 +350,9 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
   \label{speedup:becchi}
 \end{figure}
 
+\subsection{Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?} \label{Nourian:DemystifyingFSA_analysis}
+
+\subsubsection{Findings}
 
 
 \section{Results and discussion} \label{Results}
