@@ -22,7 +22,8 @@
 % \usepackage[parfill]{parskip}
 \usetikzlibrary{automata, positioning, arrows}
 \usetikzlibrary{arrows.meta}
-% \usepackage{pgfplots} 
+\usepackage{pgfplots} 
+\pgfplotsset{compat=1.18}
 \usepackage{indentfirst}
 \pagestyle{headings}
 % \setlength{\parskip}{0pt}
@@ -48,7 +49,7 @@
 \maketitle
 
 \begin{abstract}
-	\blindtext[2]
+  \blindtext[2]
 
 \end{abstract}
 
@@ -82,40 +83,40 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 
 % latex table of special symbols
 \begin{table}[h!]
-	\centering
-	\begin{tabular}{ |c|c| }
-		\hline
-		\textbf{Symbols}        & \textbf{Meaning}                 \\
-		\hline
-		\texttt{.}              & Any character                    \\
-		\hline
-		\texttt{*}              & Zero or more matches             \\
-		\hline
-		\texttt{+}              & One or more matches              \\
-		\hline
-		\texttt{?}              & Zero or one match                \\
-		\hline
-		\texttt{|}              & Alternation                      \\
-		\hline
-		\texttt{-}              & Range                            \\
-		\hline
-		\texttt{\textbackslash} & Escape character                 \\
-		\hline
-		\texttt{\^{}}           & Line start                       \\
-		\hline
-		\texttt{\$}             & Line end                         \\
-		\hline
-		\texttt{:}              & Grouping                         \\
-		\hline
-		\texttt{[ ]}            & Start and end of character class \\
-		\hline
-		\texttt{( )}            & Start and end of group           \\
-		\hline
-		\texttt{\{ \}}          & Start and end of quantifier      \\
-		\hline
-	\end{tabular}
-	\caption{Regular expression special symbols, author's own work }
-	\label{table:regex_special_symbols}
+  \centering
+  \begin{tabular}{ |c|c| }
+    \hline
+    \textbf{Symbols}        & \textbf{Meaning}                 \\
+    \hline
+    \texttt{.}              & Any character                    \\
+    \hline
+    \texttt{*}              & Zero or more matches             \\
+    \hline
+    \texttt{+}              & One or more matches              \\
+    \hline
+    \texttt{?}              & Zero or one match                \\
+    \hline
+    \texttt{|}              & Alternation                      \\
+    \hline
+    \texttt{-}              & Range                            \\
+    \hline
+    \texttt{\textbackslash} & Escape character                 \\
+    \hline
+    \texttt{\^{}}           & Line start                       \\
+    \hline
+    \texttt{\$}             & Line end                         \\
+    \hline
+    \texttt{:}              & Grouping                         \\
+    \hline
+    \texttt{[ ]}            & Start and end of character class \\
+    \hline
+    \texttt{( )}            & Start and end of group           \\
+    \hline
+    \texttt{\{ \}}          & Start and end of quantifier      \\
+    \hline
+  \end{tabular}
+  \caption{Regular expression special symbols, author's own work }
+  \label{table:regex_special_symbols}
 \end{table}
 
 \subsection{Finite Automata} \label{Finite Automata}
@@ -124,57 +125,57 @@ Two widely used representations of finite automata are deterministic finite auto
 Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs ~\cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
 
 \begin{figure}[h!]
-	\tikzset{
-		->, % makes the edges directed
-		>=stealth', % makes the arrow heads bold
-		node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-		every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
-		initial text=$ $, % sets the text that appears on the start arrow
-	}
-	\centering
-	\scalebox{.7}[.7]{
-		\begin{tikzpicture}
-			\node[draw] at (0,2) {NFA};
-			\node[state, initial] (q0) {$q_0$};
-			\node[state, below right of=q0] (q1) {$q_1$};
-			\node[state, above right of=q0] (q2) {$q_2$};
-			\node[state, right of=q0] (q3) {$q_3$};
-			\node[state, accepting, right of=q3] (q4) {$q_4$};
-			\draw (q0) edge[loop above] node{$a$} (q0)
-			(q0) edge[right,above] node{$c$} (q3)
-			(q0) edge[left] node{$b$} (q1)
-			(q0) edge[right, above] node{$d$} (q2)
-			(q1) edge[loop above] node{$b$} (q1)
-			(q1) edge[right] node{$a$} (q3)
-			(q1) edge[below] node{$d,c$} (q4)
-			(q2) edge[loop above] node{$d$} (q1)
-			(q2) edge[right] node{$c$} (q3)
-			(q2) edge[above ] node{$a,b$} (q4)
-			(q3) edge[above] node{$a,b,d,c$} (q4)
-			(q4) edge[loop above] node{$a,b,d,c$} (q4)
-			;
-		\end{tikzpicture}
-	}
-	\scalebox{.7}[.7]{
-		\begin{tikzpicture}
-			\node[draw] at (0,3) {DFA};
-			\node[state, initial] (q0) {$q_0$};
-			\node[state, above right of=q0] (q1) {$q_1$};
-			\node[state, right of=q0] (q2) {$q_2$};
-			\node[state, accepting, right of=q2] (q3) {$q_3$};
-			\draw (q0) edge[loop above] node{$a$} (q0)
-			(q0) edge[bend right,below] node{$c$} (q3)
-			(q0) edge[left] node{$b$} (q1)
-			(q1) edge[loop above] node{$b$} (q1)
-			(q2) edge[loop above] node{$d$} (q1)
-			(q1) edge[above] node{$a$} (q3)
-			(q0) edge[right, above] node{$d$} (q2)
-			(q2) edge[right, above] node{$d$} (q3)
-			;
-		\end{tikzpicture}
-	}
-	\caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
-	\label{fig:regex_FSA}
+  \tikzset{
+    ->, % makes the edges directed
+    >=stealth', % makes the arrow heads bold
+    node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+    every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+    initial text=$ $, % sets the text that appears on the start arrow
+  }
+  \centering
+  \scalebox{.7}[.7]{
+    \begin{tikzpicture}
+      \node[draw] at (0,2) {NFA};
+      \node[state, initial] (q0) {$q_0$};
+      \node[state, below right of=q0] (q1) {$q_1$};
+      \node[state, above right of=q0] (q2) {$q_2$};
+      \node[state, right of=q0] (q3) {$q_3$};
+      \node[state, accepting, right of=q3] (q4) {$q_4$};
+      \draw (q0) edge[loop above] node{$a$} (q0)
+      (q0) edge[right,above] node{$c$} (q3)
+      (q0) edge[left] node{$b$} (q1)
+      (q0) edge[right, above] node{$d$} (q2)
+      (q1) edge[loop above] node{$b$} (q1)
+      (q1) edge[right] node{$a$} (q3)
+      (q1) edge[below] node{$d,c$} (q4)
+      (q2) edge[loop above] node{$d$} (q1)
+      (q2) edge[right] node{$c$} (q3)
+      (q2) edge[above ] node{$a,b$} (q4)
+      (q3) edge[above] node{$a,b,d,c$} (q4)
+      (q4) edge[loop above] node{$a,b,d,c$} (q4)
+      ;
+    \end{tikzpicture}
+  }
+  \scalebox{.7}[.7]{
+    \begin{tikzpicture}
+      \node[draw] at (0,3) {DFA};
+      \node[state, initial] (q0) {$q_0$};
+      \node[state, above right of=q0] (q1) {$q_1$};
+      \node[state, right of=q0] (q2) {$q_2$};
+      \node[state, accepting, right of=q2] (q3) {$q_3$};
+      \draw (q0) edge[loop above] node{$a$} (q0)
+      (q0) edge[bend right,below] node{$c$} (q3)
+      (q0) edge[left] node{$b$} (q1)
+      (q1) edge[loop above] node{$b$} (q1)
+      (q2) edge[loop above] node{$d$} (q1)
+      (q1) edge[above] node{$a$} (q3)
+      (q0) edge[right, above] node{$d$} (q2)
+      (q2) edge[right, above] node{$d$} (q3)
+      ;
+    \end{tikzpicture}
+  }
+  \caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
+  \label{fig:regex_FSA}
 \end{figure}
 
 \subsubsection{Automata processing} \label{Automata processing}
@@ -211,20 +212,76 @@ Later, studies were published dealing with speeding up the processing of finite 
 "Asynchronous Automata Processing on GPUs"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
 
 \marginpar{GPU acceleration of finite state machine input execution:
-	Improving scale and performance.
-	nieco o CUDA/OPENCL}
-
-
+  Improving scale and performance.
+  nieco o CUDA/OPENCL}
 
 \section{Analysis} \label{Analysis}
+\subsection{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space} \label{Becchi:regex_large_dataset_analysis}
+This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to make relevant measurements using real-life data. The measurements were conducted using NFA design by \cite{cascarano2010infant}, along with their optimised NFA, and DFA design by \cite{becchi2007improved}, including their optimised versions.
 
+\texttt{add dataset characteristics}
+
+Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 480 GPU, using CentOS 5.5 and CUDA 4.
+\subsubsection{Results}
+% graph of size of DNFs over NFA
+% states(x)|	UDFA	CDFA	EDFA (y)
+% 251|	246	6.2	10
+% 603.8|	592	15.2	26
+% 1600|	1600	33.9	63.4
+\begin{figure}
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=states,
+        xlabel=DFAs size in MB,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,.9)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=1 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={251, 603.8, 1600}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+        % tick align=outside,
+      ]
+      \addplot
+      coordinates {
+          (1, 6.2)
+          (2, 15.2)
+          (3, 33.9)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 10)
+          (2, 26)
+          (3, 63.4)
+        };
+      \addplot[
+        fill=red!50, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 246)
+          (2, 592)
+          (3, 1600)
+        };
+      \legend{U-DFA, C-DFA, E-DFA}
+    \end{axis}
+  \end{tikzpicture}
+\end{figure}
 
 
 \section{Results and discussion} \label{Results}
 
-\section{Conclusions} \label{Conclusions} % prípadne iný variant názvu
+\section{Conclusions} \label{Conclusions}
 
 
 \bibliography{zdroje}
-\bibliographystyle{abbrv} % prípadne alpha, abbrv alebo hociktorý iný
+\bibliographystyle{abbrv}
 \end{document}

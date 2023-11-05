@@ -6,11 +6,22 @@ A.~Asaduzzaman, A.~Trent, S.~Osborne, C.~Aldershof, and F.~N. Sibai.
 \newblock In {\em 2021 8th International Conference on Electrical and
   Electronics Engineering (ICEEE)}, pages 238--242, 2021.
 
+\bibitem{becchi2007improved}
+M.~Becchi and P.~Crowley.
+\newblock An improved algorithm to accelerate regular expression evaluation.
+\newblock In {\em Proceedings of the 3rd ACM/IEEE Symposium on Architecture for
+  networking and communications systems}, pages 145--154, 2007.
+
 \bibitem{becchi2008workload}
 M.~Becchi, M.~Franklin, and P.~Crowley.
 \newblock A workload for evaluating deep packet inspection architectures.
 \newblock In {\em 2008 IEEE International Symposium on Workload
   Characterization}, pages 79--89. IEEE, 2008.
+
+\bibitem{cascarano2010infant}
+N.~Cascarano, P.~Rolando, F.~Risso, and R.~Sisto.
+\newblock infant: Nfa pattern matching on gpgpu devices.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 40(5):20--26, 2010.
 
 \bibitem{Chapman:Usage}
 C.~Chapman and K.~T. Stolee.
@@ -95,12 +106,6 @@ M.~Nourian, X.~Wang, X.~Yu, W.-c. Feng, and M.~Becchi.
 \newblock In {\em Proceedings of the International Conference on
   Supercomputing}, ICS '17, New York, NY, USA, 2017. Association for Computing
   Machinery.
-
-\bibitem{prieto2014prediction}
-G.~Prieto, A.~Fullaondo, and J.~A. Rodriguez.
-\newblock Prediction of nuclear export signals using weighted regular
-  expressions (wregex).
-\newblock {\em Bioinformatics}, 30(9):1220--1227, 2014.
 
 \bibitem{schatz2007fast}
 M.~C. Schatz and C.~Trapnell.
