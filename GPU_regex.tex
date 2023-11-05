@@ -24,6 +24,8 @@
 \usetikzlibrary{arrows.meta}
 \usepackage{pgfplots} 
 \pgfplotsset{compat=1.18}
+\usepgfplotslibrary{external}
+\tikzexternalize
 \usepackage{indentfirst}
 \pagestyle{headings}
 % \setlength{\parskip}{0pt}
@@ -219,27 +221,27 @@ Later, studies were published dealing with speeding up the processing of finite 
 \subsection{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space} \label{Becchi:regex_large_dataset_analysis}
 This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to make relevant measurements using real-life data. The measurements were conducted using NFA design by \cite{cascarano2010infant}, along with their optimised NFA, and DFA design by \cite{becchi2007improved}, including their optimised versions.
 
-\texttt{add dataset characteristics}
+Their dataset used both real and synthetic pattern sets.The real patterns were taken from Snort's backdoor and spyware rules. The synthetic sets were generated using a tool described in \cite{becchi2008workload} and tokens from the backdoor rules.
 
 Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 480 GPU, using CentOS 5.5 and CUDA 4.
 \subsubsection{Results}
-% graph of size of DNFs over NFA
-% states(x)|	UDFA	CDFA	EDFA (y)
-% 251|	246	6.2	10
-% 603.8|	592	15.2	26
-% 1600|	1600	33.9	63.4
-\begin{figure}
+
+
+
+\begin{figure}[h!]
+  \centering
+  % \scalebox{.9}[.9]{
   \begin{tikzpicture}
     \begin{axis}[
-        ylabel=states,
+        ylabel=Number of states,
         xlabel=DFAs size in MB,
         enlargelimits={abs=0.4},
-        legend style={at={(0.5,.9)},
+        legend style={at={(0.5,1)},
             anchor=north,legend columns=3},
         ybar,
         bar width=0.2, % Adjust the width as needed
         xtick=\empty, % Remove numbers on the x-axis
-        width=1 \textwidth,
+        width=0.95 \textwidth,
         height=0.5 \textwidth,
         extra x ticks={1, 2, 3}, % Add extra ticks at positions 1, 2, and 3
         extra x tick labels={251, 603.8, 1600}, % Label the extra ticks
@@ -247,7 +249,6 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
         axis x line*=bottom,
         axis y line=left,
         ymajorgrids=true,
-        % tick align=outside,
       ]
       \addplot
       coordinates {
@@ -264,7 +265,7 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
           (3, 63.4)
         };
       \addplot[
-        fill=red!50, % Set a custom color for this bar
+        fill=red!60, % Set a custom color for this bar
       ]
       coordinates {
           (1, 246)
@@ -274,7 +275,75 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
       \legend{U-DFA, C-DFA, E-DFA}
     \end{axis}
   \end{tikzpicture}
+  \caption{Scaling of DFAs size, author's own work}
+  \label{dfas_size:becchi}
 \end{figure}
+
+% graph of speed up of GPU over CPU
+% NFA	U-DFA	E-DFA
+% Backdoor	94	21.69620253	5.392405063
+% Spyware	51.55555556	42.05	7.95
+% Range1	5.244897959	5.846153846	5.846153846
+% Dotstar.1	28.88888889	30.40384615	5.807692308
+% Dotstar.2	40		8.21875
+\begin{figure}[h!]
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=Speed up,
+        xlabel=Pattern set,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,1)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=0.95 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3, 4, 5}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={Backdoor, Spyware, Range1, Dotstar.1, Dotstar.2}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+          (1, 94)
+          (2, 51.55555556)
+          (3, 5.244897959)
+          (4, 28.88888889)
+          (5, 40)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 21.69620253)
+          (2, 42.05)
+          (3, 5.846153846)
+          (4, 30.40384615)
+          (5, nan)
+        };
+      \addplot[
+        fill=red!60, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 5.392405063)
+          (2, 7.95)
+          (3, 5.846153846)
+          (4, 5.807692308)
+          (5, 8.21875)
+        };
+      \node[green] at (axis cs:5,10) {X}; % Adjust the color
+      \legend{NFA, U-DFA, E-DFA}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Speed up of GPU accelerated traversals over CPU, author's own work}
+  \label{speedup:becchi}
+\end{figure}
+
 
 
 \section{Results and discussion} \label{Results}
