@@ -43,7 +43,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Finite Automata}{3}{subsection.3.1}\protected@file@percent }
 \newlabel{Finite Automata}{{3.1}{3}{Finite Automata}{subsection.3.1}{}}
 \citation{Nourian:DemystifyingFSA}
-\citation{yaneva2022gpuaccelerationFSA}
+\citation{Becchi:regex_large_dataset}
 \citation{yaneva2022gpuaccelerationFSA}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces NFA and DFA for regular expression \texttt  {a*(b+a|d*c)}, autor's own work\relax }}{4}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:regex_FSA}{{1}{4}{NFA and DFA for regular expression \texttt {a*(b+a|d*c)}, autor's own work\relax }{figure.caption.2}{}}
@@ -51,6 +51,7 @@
 \newlabel{Automata processing}{{3.1.1}{4}{Automata processing}{subsubsection.3.1.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Graphics Processing Unit}{4}{subsection.3.2}\protected@file@percent }
 \newlabel{GPU}{{3.2}{4}{Graphics Processing Unit}{subsection.3.2}{}}
+\citation{yaneva2022gpuaccelerationFSA}
 \citation{Asaduzzaman:Impact_CUDA_OpenCL}
 \citation{Fang:Comparison-cuda-opencl}
 \citation{schatz2007fast}
@@ -59,14 +60,14 @@
 \citation{Zu:GPU-NFA}
 \citation{Becchi:regex_large_dataset}
 \citation{Nourian:DemystifyingFSA}
-\citation{Xia:FSA-scaling}
-\citation{zhao2015fly}
-\citation{Liu:WhyGPUSlowNFA}
-\citation{Liu:Asynchronous}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Parallel computing platforms}{5}{subsubsection.3.2.1}\protected@file@percent }
 \newlabel{Parallel computing platforms}{{3.2.1}{5}{Parallel computing platforms}{subsubsection.3.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{5}{section.4}\protected@file@percent }
 \newlabel{Related work}{{4}{5}{Related Work}{section.4}{}}
+\citation{Xia:FSA-scaling}
+\citation{zhao2015fly}
+\citation{Liu:WhyGPUSlowNFA}
+\citation{Liu:Asynchronous}
 \citation{Becchi:regex_large_dataset}
 \citation{cascarano2010infant}
 \citation{becchi2007improved}
@@ -77,23 +78,28 @@
 \newlabel{Analysis}{{5}{6}{Analysis}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space}{6}{subsection.5.1}\protected@file@percent }
 \newlabel{Becchi:regex_large_dataset_analysis}{{5.1}{6}{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space}{subsection.5.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Results}{6}{subsubsection.5.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scaling of DFAs size, author's own work\relax }}{6}{figure.caption.3}\protected@file@percent }
-\newlabel{dfas_size:becchi}{{2}{6}{Scaling of DFAs size, author's own work\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Findings}{6}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Scaling of DFAs size, author's own work\relax }}{7}{figure.caption.3}\protected@file@percent }
+\newlabel{dfas_size:becchi}{{2}{7}{Scaling of DFAs size, author's own work\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces something about Speed NFA/DFA, author's own work\relax }}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{speed NFA/DFA:becchi}{{3}{7}{something about Speed NFA/DFA, author's own work\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Speed up of GPU accelerated traversals over CPU, author's own work\relax }}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{speedup:becchi}{{4}{7}{Speed up of GPU accelerated traversals over CPU, author's own work\relax }{figure.caption.5}{}}
 \bibcite{becchi2007improved}{2}
 \bibcite{becchi2008workload}{3}
 \bibcite{cascarano2010infant}{4}
 \bibcite{Chapman:Usage}{5}
 \bibcite{Davis:Re-use}{6}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Speed up of GPU accelerated traversals over CPU, author's own work\relax }}{7}{figure.caption.4}\protected@file@percent }
-\newlabel{speedup:becchi}{{3}{7}{Speed up of GPU accelerated traversals over CPU, author's own work\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Results and discussion}{7}{section.6}\protected@file@percent }
-\newlabel{Results}{{6}{7}{Results and discussion}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{7}{section.7}\protected@file@percent }
-\newlabel{Conclusions}{{7}{7}{Conclusions}{section.7}{}}
 \bibcite{Fang:Comparison-cuda-opencl}{7}
 \bibcite{fuchs2019accelerator}{8}
 \bibcite{Gunawan2019/03}{9}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?}{8}{subsection.5.2}\protected@file@percent }
+\newlabel{Nourian:DemystifyingFSA_analysis}{{5.2}{8}{Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}Findings}{8}{subsubsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results and discussion}{8}{section.6}\protected@file@percent }
+\newlabel{Results}{{6}{8}{Results and discussion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{8}{section.7}\protected@file@percent }
+\newlabel{Conclusions}{{7}{8}{Conclusions}{section.7}{}}
 \bibcite{huang2008gpu}{10}
 \bibcite{István:databases-regex}{11}
 \bibcite{Lee:myths}{12}
@@ -111,4 +117,4 @@
 \bibcite{zhao2015fly}{24}
 \bibcite{Zu:GPU-NFA}{25}
 \bibstyle{abbrv}
-\gdef \@abspage@last{9}
+\gdef \@abspage@last{10}
