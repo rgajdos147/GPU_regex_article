@@ -49,7 +49,7 @@
 \maketitle
 
 \begin{abstract}
-	\blindtext[2]
+  \blindtext[2]
 
 \end{abstract}
 
@@ -83,40 +83,40 @@ Basic syntax is described as follows: characters of alphabet are matched literal
 
 % latex table of special symbols
 \begin{table}[h!]
-	\centering
-	\begin{tabular}{ |c|c| }
-		\hline
-		\textbf{Symbols}        & \textbf{Meaning}                 \\
-		\hline
-		\texttt{.}              & Any character                    \\
-		\hline
-		\texttt{*}              & Zero or more matches             \\
-		\hline
-		\texttt{+}              & One or more matches              \\
-		\hline
-		\texttt{?}              & Zero or one match                \\
-		\hline
-		\texttt{|}              & Alternation                      \\
-		\hline
-		\texttt{-}              & Range                            \\
-		\hline
-		\texttt{\textbackslash} & Escape character                 \\
-		\hline
-		\texttt{\^{}}           & Line start                       \\
-		\hline
-		\texttt{\$}             & Line end                         \\
-		\hline
-		\texttt{:}              & Grouping                         \\
-		\hline
-		\texttt{[ ]}            & Start and end of character class \\
-		\hline
-		\texttt{( )}            & Start and end of group           \\
-		\hline
-		\texttt{\{ \}}          & Start and end of quantifier      \\
-		\hline
-	\end{tabular}
-	\caption{Regular expression special symbols, author's own work }
-	\label{table:regex_special_symbols}
+  \centering
+  \begin{tabular}{ |c|c| }
+    \hline
+    \textbf{Symbols}        & \textbf{Meaning}                 \\
+    \hline
+    \texttt{.}              & Any character                    \\
+    \hline
+    \texttt{*}              & Zero or more matches             \\
+    \hline
+    \texttt{+}              & One or more matches              \\
+    \hline
+    \texttt{?}              & Zero or one match                \\
+    \hline
+    \texttt{|}              & Alternation                      \\
+    \hline
+    \texttt{-}              & Range                            \\
+    \hline
+    \texttt{\textbackslash} & Escape character                 \\
+    \hline
+    \texttt{\^{}}           & Line start                       \\
+    \hline
+    \texttt{\$}             & Line end                         \\
+    \hline
+    \texttt{:}              & Grouping                         \\
+    \hline
+    \texttt{[ ]}            & Start and end of character class \\
+    \hline
+    \texttt{( )}            & Start and end of group           \\
+    \hline
+    \texttt{\{ \}}          & Start and end of quantifier      \\
+    \hline
+  \end{tabular}
+  \caption{Regular expression special symbols, author's own work }
+  \label{table:regex_special_symbols}
 \end{table}
 
 \subsection{Finite Automata} \label{Finite Automata}
@@ -125,57 +125,57 @@ Two widely used representations of finite automata are deterministic finite auto
 Although deterministic finite automata (DFAs) have a simpler transition system, their execution is serial and the size of transitions in DFAs may be significantly larger than their equivalent NFAs \cite{Liu:Asynchronous,Liu:WhyGPUSlowNFA}.
 
 \begin{figure}[h!]
-	\tikzset{
-		->, % makes the edges directed
-		>=stealth', % makes the arrow heads bold
-		node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-		every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
-		initial text=$ $, % sets the text that appears on the start arrow
-	}
-	\centering
-	\scalebox{.7}[.7]{
-		\begin{tikzpicture}
-			\node[draw] at (0,2) {NFA};
-			\node[state, initial] (q0) {$q_0$};
-			\node[state, below right of=q0] (q1) {$q_1$};
-			\node[state, above right of=q0] (q2) {$q_2$};
-			\node[state, right of=q0] (q3) {$q_3$};
-			\node[state, accepting, right of=q3] (q4) {$q_4$};
-			\draw (q0) edge[loop above] node{$a$} (q0)
-			(q0) edge[right,above] node{$c$} (q3)
-			(q0) edge[left] node{$b$} (q1)
-			(q0) edge[right, above] node{$d$} (q2)
-			(q1) edge[loop above] node{$b$} (q1)
-			(q1) edge[right] node{$a$} (q3)
-			(q1) edge[below] node{$d,c$} (q4)
-			(q2) edge[loop above] node{$d$} (q1)
-			(q2) edge[right] node{$c$} (q3)
-			(q2) edge[above ] node{$a,b$} (q4)
-			(q3) edge[above] node{$a,b,d,c$} (q4)
-			(q4) edge[loop above] node{$a,b,d,c$} (q4)
-			;
-		\end{tikzpicture}
-	}
-	\scalebox{.7}[.7]{
-		\begin{tikzpicture}
-			\node[draw] at (0,3) {DFA};
-			\node[state, initial] (q0) {$q_0$};
-			\node[state, above right of=q0] (q1) {$q_1$};
-			\node[state, right of=q0] (q2) {$q_2$};
-			\node[state, accepting, right of=q2] (q3) {$q_3$};
-			\draw (q0) edge[loop above] node{$a$} (q0)
-			(q0) edge[bend right,below] node{$c$} (q3)
-			(q0) edge[left] node{$b$} (q1)
-			(q1) edge[loop above] node{$b$} (q1)
-			(q2) edge[loop above] node{$d$} (q1)
-			(q1) edge[above] node{$a$} (q3)
-			(q0) edge[right, above] node{$d$} (q2)
-			(q2) edge[right, above] node{$d$} (q3)
-			;
-		\end{tikzpicture}
-	}
-	\caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
-	\label{fig:regex_FSA}
+  \tikzset{
+    ->, % makes the edges directed
+    >=stealth', % makes the arrow heads bold
+    node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+    every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+    initial text=$ $, % sets the text that appears on the start arrow
+  }
+  \centering
+  \scalebox{.7}[.7]{
+    \begin{tikzpicture}
+      \node[draw] at (0,2) {NFA};
+      \node[state, initial] (q0) {$q_0$};
+      \node[state, below right of=q0] (q1) {$q_1$};
+      \node[state, above right of=q0] (q2) {$q_2$};
+      \node[state, right of=q0] (q3) {$q_3$};
+      \node[state, accepting, right of=q3] (q4) {$q_4$};
+      \draw (q0) edge[loop above] node{$a$} (q0)
+      (q0) edge[right,above] node{$c$} (q3)
+      (q0) edge[left] node{$b$} (q1)
+      (q0) edge[right, above] node{$d$} (q2)
+      (q1) edge[loop above] node{$b$} (q1)
+      (q1) edge[right] node{$a$} (q3)
+      (q1) edge[below] node{$d,c$} (q4)
+      (q2) edge[loop above] node{$d$} (q1)
+      (q2) edge[right] node{$c$} (q3)
+      (q2) edge[above ] node{$a,b$} (q4)
+      (q3) edge[above] node{$a,b,d,c$} (q4)
+      (q4) edge[loop above] node{$a,b,d,c$} (q4)
+      ;
+    \end{tikzpicture}
+  }
+  \scalebox{.7}[.7]{
+    \begin{tikzpicture}
+      \node[draw] at (0,3) {DFA};
+      \node[state, initial] (q0) {$q_0$};
+      \node[state, above right of=q0] (q1) {$q_1$};
+      \node[state, right of=q0] (q2) {$q_2$};
+      \node[state, accepting, right of=q2] (q3) {$q_3$};
+      \draw (q0) edge[loop above] node{$a$} (q0)
+      (q0) edge[bend right,below] node{$c$} (q3)
+      (q0) edge[left] node{$b$} (q1)
+      (q1) edge[loop above] node{$b$} (q1)
+      (q2) edge[loop above] node{$d$} (q1)
+      (q1) edge[above] node{$a$} (q3)
+      (q0) edge[right, above] node{$d$} (q2)
+      (q2) edge[right, above] node{$d$} (q3)
+      ;
+    \end{tikzpicture}
+  }
+  \caption{NFA and DFA for regular expression \texttt{a*(b+a|d*c)}, autor's own work}
+  \label{fig:regex_FSA}
 \end{figure}
 
 \subsubsection{Automata processing} \label{Automata processing}
@@ -214,8 +214,8 @@ Later, studies were published dealing with speeding up the processing of finite 
 "Asynchronous Automata Processing on GPUs"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
 
 \marginpar{GPU acceleration of finite state machine input execution:
-	Improving scale and performance.
-	nieco o CUDA/OPENCL}
+  Improving scale and performance.
+  nieco o CUDA/OPENCL}
 
 \section{Analysis} \label{Analysis}
 \subsection{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space} \label{Becchi:regex_large_dataset_analysis}
@@ -223,137 +223,262 @@ This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to
 
 Their dataset used both real and synthetic pattern sets. The real patterns were taken from Snort's backdoor and spyware rules. The synthetic sets were generated using a tool described in \cite{becchi2008workload} and tokens from the backdoor rules.
 
-Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA \marginpar{CUDA cores maybe} GTX 480 GPU, using CentOS 5.5 and CUDA 4.
+Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA \marginpar{CUDA cores maybe} GTX 480 GPU\footnote{cuda cores}, using CentOS 5.5 and CUDA 4.
 \subsubsection{Findings}
 The repetition of wildcards and large character sets can lead to a state explosion when converting an NFA to a DFA. On the chart \ref{dfas_size:becchi}, we can see size of DFAs in MB. In contrast, NFAs are consistently less than 1 MB in size. For synthetic datasets, the uncompressed DFA representation has 40-50 times the memory requirement of its compressed counterpart. At the time of writing, the Dotstar.2 datasets exceed the device memory capacity when uncompressed-DFA representation is utilized.
 \begin{figure}[h!]
-	\centering
-	% \scalebox{.9}[.9]{
-	\begin{tikzpicture}
-		\begin{axis}[
-				ylabel=Number of states,
-				xlabel=DFAs size in MB,
-				enlargelimits={abs=0.4},
-				legend style={at={(0.5,1)},
-						anchor=north,legend columns=3},
-				ybar,
-				bar width=0.2, % Adjust the width as needed
-				xtick=\empty, % Remove numbers on the x-axis
-				width=0.95 \textwidth,
-				height=0.5 \textwidth,
-				extra x ticks={1, 2, 3}, % Add extra ticks at positions 1, 2, and 3
-				extra x tick labels={251, 603.8, 1600}, % Label the extra ticks
-				% remove just frame, not ticks
-				axis x line*=bottom,
-				axis y line=left,
-				ymajorgrids=true,
-			]
-			\addplot
-			coordinates {
-					(1, 6.2)
-					(2, 15.2)
-					(3, 33.9)
-				};
-			\addplot[
-				fill=green!75, % Set a custom color for this bar
-			]
-			coordinates {
-					(1, 10)
-					(2, 26)
-					(3, 63.4)
-				};
-			\addplot[
-				fill=red!60, % Set a custom color for this bar
-			]
-			coordinates {
-					(1, 246)
-					(2, 592)
-					(3, 1600)
-				};
-			\legend{C-DFA, E-DFA, U-DFA}
-		\end{axis}
-	\end{tikzpicture}
-	\caption{Scaling of DFAs size, author's own work}
-	\label{dfas_size:becchi}
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=Number of states,
+        xlabel=DFAs size in MB,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,1)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=0.95 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={251, 603.8, 1600}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+          (1, 6.2)
+          (2, 15.2)
+          (3, 33.9)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 10)
+          (2, 26)
+          (3, 63.4)
+        };
+      \addplot[
+        fill=red!60, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 246)
+          (2, 592)
+          (3, 1600)
+        };
+      \legend{C-DFA, E-DFA, U-DFA}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Scaling of DFAs size, author's own work}
+  \label{dfas_size:becchi}
 \end{figure}
 
 As shown in chart \ref{speed NFA/DFA:becchi}, the U-DFA is the optimal solution for all pattern-sets, when applicable. However, this solution has high memory requirements and cannot be applied to complex pattern-sets due to a lack of graphics card memory.
 E-DFA offers a reasonable trade-off between U-DFA and C-DFA, resulting in a 3-5 times enhancement in speed compared to C-DFA at the expense of almost 1.5X more memory usage. Moreover, E-DFA performs better than NFA solutions on nearly all datasets.
 
 \begin{figure}[h!]
-	\centering
-	% \scalebox{.9}[.9]{
-	\begin{tikzpicture}
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
 
-	\end{tikzpicture}
-	\caption{something about Speed NFA/DFA, author's own work}
-	\label{speed NFA/DFA:becchi}
+  \end{tikzpicture}
+  \caption{something about Speed NFA/DFA, author's own work}
+  \label{speed NFA/DFA:becchi}
 \end{figure}
 
 As shown in chart \ref{speedup:becchi}, both GPU implementations based on NFA and DFA algorithms outperformed their CPU equivalent.
 
 \begin{figure}[h!]
-	\centering
-	% \scalebox{.9}[.9]{
-	\begin{tikzpicture}
-		\begin{axis}[
-				ylabel=Speed up,
-				xlabel=Dataset,
-				enlargelimits={abs=0.4},
-				legend style={at={(0.5,1)},
-						anchor=north,legend columns=3},
-				ybar,
-				bar width=0.2, % Adjust the width as needed
-				xtick=\empty, % Remove numbers on the x-axis
-				width=0.95 \textwidth,
-				height=0.5 \textwidth,
-				extra x ticks={1, 2, 3, 4, 5}, % Add extra ticks at positions 1, 2, and 3
-				extra x tick labels={Backdoor, Spyware, Range1, Dotstar.1, Dotstar.2}, % Label the extra ticks
-				% remove just frame, not ticks
-				axis x line*=bottom,
-				axis y line=left,
-				ymajorgrids=true,
-			]
-			\addplot
-			coordinates {
-					(1, 94)
-					(2, 51.55555556)
-					(3, 5.244897959)
-					(4, 28.88888889)
-					(5, 40)
-				};
-			\addplot[
-				fill=green!75, % Set a custom color for this bar
-			]
-			coordinates {
-					(1, 21.69620253)
-					(2, 42.05)
-					(3, 5.846153846)
-					(4, 30.40384615)
-					(5, nan)
-				};
-			\addplot[
-				fill=red!60, % Set a custom color for this bar
-			]
-			coordinates {
-					(1, 5.392405063)
-					(2, 7.95)
-					(3, 5.846153846)
-					(4, 5.807692308)
-					(5, 8.21875)
-				};
-			\node[green] at (axis cs:5,10) {X}; % Adjust the color
-			\legend{NFA, U-DFA, E-DFA}
-		\end{axis}
-	\end{tikzpicture}
-	\caption{Speed up of GPU accelerated traversals over CPU, author's own work}
-	\label{speedup:becchi}
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=Speed up,
+        xlabel=Dataset,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,1)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=0.95 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3, 4, 5}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={Backdoor, Spyware, Range1, Dotstar.1, Dotstar.2}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+          (1, 94)
+          (2, 51.55555556)
+          (3, 5.244897959)
+          (4, 28.88888889)
+          (5, 40)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 21.69620253)
+          (2, 42.05)
+          (3, 5.846153846)
+          (4, 30.40384615)
+          (5, nan)
+        };
+      \addplot[
+        fill=red!60, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 5.392405063)
+          (2, 7.95)
+          (3, 5.846153846)
+          (4, 5.807692308)
+          (5, 8.21875)
+        };
+      \node[green] at (axis cs:5,10) {X}; % Adjust the color
+      \legend{NFA, U-DFA, E-DFA}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Speed up of GPU accelerated traversals over CPU, author's own work}
+  \label{speedup:becchi}
 \end{figure}
 
 \subsection{Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?} \label{Nourian:DemystifyingFSA_analysis}
+This 2017 study\cite{Nourian:DemystifyingFSA} investigated the acceleration of Finite State Automata on GPU, FPGA and Micron's AP. The automata model employed was NFA, and the algorithm used for its traversal engine was described in \cite{van2012designing}.
+
+Their dataset consists of small NIDS, bioinformatics and synthetic pattern sets.
+The measurements were performed on a system that consisted of a dual 6-core Intel Xeon CPU and an Nvidia Titan X GPU\footnote{cuda cores} (Maxwell architecture), using CentOS 6.4 and CUDA 7. The FPGA Xilinx XC6VLX130T was chosen as it fell in the same price range as the GPU (approximately \$1,200 at that time).
 
 \subsubsection{Findings}
+The NFA format for GPU has a very small global memory utilisation, and even the largest dataset only occupies up to 133MB of global memory, which means we are able to fit any size dataset into a single GPU device, unlike FPGA and Micron's AP, which required more devices, as shown in the graph \ref{devices:DemystifyingFSA}. However, the GPU records the lowest throughput data, with a 20 times lower throughput on smaller datasets up to 1000 times lower on the largest datasets.
+% chart of devices used with dataset 
+% deep64char	deep256char	shallow64char	shallow256char
+% GPU	1	1	1	1
+% FPGA	8	8	7	8
+% Micron's AP	3	3	5	3
+\begin{figure}[h!]
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=Number of devices,
+        xlabel=Dataset,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,1.15)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=0.95 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3, 4}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={deep64char, deep256char, shallow64char, shallow256char}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+      ]
+      \addplot
+      coordinates {
+          (1, 0)
+          (1, 1)
+          (2, 1)
+          (3, 1)
+          (4, 1)
+        };
+      \addplot[
+        fill=red!60, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 3)
+          (2, 3)
+          (3, 5)
+          (4, 3)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 8)
+          (2, 8)
+          (3, 7)
+          (4, 8)
+        };
+      \legend{GPU, Micron's AP, FPGAs}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Number of devices, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
+  \label{devices:DemystifyingFSA}
+\end{figure}
 
+The optimization and partitioning steps for the NFA, which are common for all platforms, take between 3 and 249 seconds, varying with the size of the dataset. The GPU preprocessing task is primarily concerned with parsing the NFA partition files. As clearly demonstrated in Figure \ref{preprocessing:DemystifyingFSA}, GPUs provide considerably shorter preprocessing times.
+% chart of preprocessing time
+% deep64char	deep256char	shallow64char	shallow256char
+% GPU	1	4.583333333	1.366666667	4.766666667
+% FPGA (avg)	127.5	107.6	120.2	122
+% Micron's AP	12	12	224	757
+\begin{figure}[h!]
+  \centering
+  % \scalebox{.9}[.9]{
+  \begin{tikzpicture}
+    \begin{axis}[
+        ylabel=Preprocessing time in minutes,
+        xlabel=Dataset,
+        enlargelimits={abs=0.4},
+        legend style={at={(0.5,1)},
+            anchor=north,legend columns=3},
+        ybar,
+        bar width=0.2, % Adjust the width as needed
+        xtick=\empty, % Remove numbers on the x-axis
+        width=0.95 \textwidth,
+        height=0.5 \textwidth,
+        extra x ticks={1, 2, 3, 4}, % Add extra ticks at positions 1, 2, and 3
+        extra x tick labels={deep64char, deep256char, shallow64char, shallow256char}, % Label the extra ticks
+        % remove just frame, not ticks
+        axis x line*=bottom,
+        axis y line=left,
+        ymajorgrids=true,
+        ymode=log, % Set Y-axis to log scale
+      ]
+      \addplot
+      coordinates {
+          (1, 1)
+          (2, 4.583333333)
+          (3, 1.366666667)
+          (4, 4.766666667)
+        };
+      \addplot[
+        fill=red!60, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 12)
+          (2, 12)
+          (3, 224)
+          (4, 757)
+        };
+      \addplot[
+        fill=green!75, % Set a custom color for this bar
+      ]
+      coordinates {
+          (1, 127.5)
+          (2, 107.6)
+          (3, 120.2)
+          (4, 122)
+        };
+      \legend{GPU, FPGA, Micron's AP}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Preprocessing time, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
+  \label{preprocessing:DemystifyingFSA}
+\end{figure}
+\subsection{Papers on speeding up NFA processing on GPUs} \label{speeding up NFA processing on GPUs}
 
 \section{Results and discussion} \label{Results}
 
