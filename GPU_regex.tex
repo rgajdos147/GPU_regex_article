@@ -202,16 +202,16 @@ Two of the most popular APIs for GPU programming are CUDA\footnote{\url{https://
 OpenCL provides an efficient and portable way to access the power of different computing platforms. However, when comparing OpenCL to CUDA, there are sometimes performance differences. These differences are often attributed to the portability of OpenCL, which can lead to performance degradation. However, in a fair comparison, there is no inherent reason for OpenCL to perform worse than CUDA. Performance differences are primarily due to programmers and compilers behaviour\cite{Fang:Comparison-cuda-opencl}.
 
 \section{Related Work} \label{Related work}
-Research into the use of GPUs for regular expression matching started with the publications "Fast Exact String Matching on the GPU"\cite{schatz2007fast} and "A GPU-based Multiple-pattern Matching Algorithm for Network Intrusion
-Detection Systems"\cite{huang2008gpu}. Their pioneering studies introduced a string matching program and multiple-pattern matching algorithm designed to take advantage of GPU processing capabilities.
-This work was soon followed by "Accelerating Regular Expression Matching Using Hierarchical Parallel Machines on GPU"\cite{Lin:regex_gpu_parallel} and "GPU-based NFA Implementation for Memory Efficient High Speed Regular Expression Matching"\cite{Zu:GPU-NFA}. These two studies provide solutions to the performance challenges linked to regular expression matching in the context of network intrusion detection and other network functions.
+Research into the use of GPUs for regular expression matching started with the publications "\textit{Fast Exact String Matching on the GPU}"\cite{schatz2007fast} and "\textit{A GPU-based Multiple-pattern Matching Algorithm for Network Intrusion
+  Detection Systems}"\cite{huang2008gpu}. Their pioneering studies introduced a string matching program and multiple-pattern matching algorithm designed to take advantage of GPU processing capabilities.
+This work was soon followed by "\textit{Accelerating Regular Expression Matching Using Hierarchical Parallel Machines on GPU}"\cite{Lin:regex_gpu_parallel} and "\textit{GPU-based NFA Implementation for Memory Efficient High Speed Regular Expression Matching}"\cite{Zu:GPU-NFA}. These two studies provide solutions to the performance challenges linked to regular expression matching in the context of network intrusion detection and other network functions.
 
-Afterwards, a large, comprehensive study entitled "GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space"\cite{Becchi:regex_large_dataset} was published. The study examines regular expression matching on GPUs, focusing on practical-sized and complex datasets. It explores the advantages and limitations of different automata representations and various GPU implementation techniques.
+Afterwards, a large, comprehensive study entitled "\textit{GPU Acceleration of Regular Expression Matching for Large Datasets: Exploring the Implementation Space}"\cite{Becchi:regex_large_dataset} was published. The study examines regular expression matching on GPUs, focusing on practical-sized and complex datasets. It explores the advantages and limitations of different automata representations and various GPU implementation techniques.
 
-In the paper "Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?"\cite{Nourian:DemystifyingFSA}, the authors compare the performance of GPUs, FPGAs, and Micron's Automata Processor (AP) for regular expression matching.
+In the paper "\textit{Demystifying Automata Processing: GPUs, FPGAs or Micron's AP?}"\cite{Nourian:DemystifyingFSA}, the authors compare the performance of GPUs, FPGAs, and Micron's Automata Processor (AP) for regular expression matching.
 
-Later, studies were published dealing with speeding up the processing of finite state machines. Papers "Scaling Out Speculative Execution of Finite-State Machines with Parallel Merge"\cite{Xia:FSA-scaling} and "On-the-Fly Principled Speculation for FSM Parallelization"\cite{zhao2015fly} introduce a speculative execution technique for finite state machines. "Why GPUs are Slow at Executing NFAs and How to Make them Faster"\cite{Liu:WhyGPUSlowNFA} proposed and evaluated optimisations to improve the throughput of NFA processing on GPUs by addresing tackle suboptimal data movement and underutilisation.
-"Asynchronous Automata Processing on GPUs"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
+Later, studies were published dealing with speeding up the processing of finite state machines. Papers "\textit{Scaling Out Speculative Execution of Finite-State Machines with Parallel Merge}"\cite{Xia:FSA-scaling} based on "\textit{On-the-Fly Principled Speculation for FSM Parallelization}"\cite{zhao2015fly} introduce a speculative execution technique for finite state machines. "\textit{Why GPUs are Slow at Executing NFAs and How to Make them Faster}"\cite{Liu:WhyGPUSlowNFA} proposed and evaluated optimisations to improve the throughput of NFA processing on GPUs by addresing tackle suboptimal data movement and underutilisation.
+"\textit{Asynchronous Automata Processing on GPUs}"\cite{Liu:Asynchronous} have developed a lightweight approach to increase the parallelism of automata processing on GPUs by asynchronously searching for patterns in the input stream in parallel.
 
 \marginpar{GPU acceleration of finite state machine input execution:
   Improving scale and performance.
@@ -224,7 +224,7 @@ This study\cite{Becchi:regex_large_dataset}, published in 2013, was the first to
 Their dataset used both real and synthetic pattern sets. The real patterns were taken from Snort's backdoor and spyware rules. The synthetic sets were generated using a tool described in \cite{becchi2008workload} and tokens from the backdoor rules.
 
 Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA \marginpar{CUDA cores maybe} GTX 480 GPU\footnote{cuda cores}, using CentOS 5.5 and CUDA 4.
-\subsubsection{Findings}
+\subsubsection{Study findings}
 The repetition of wildcards and large character sets can lead to a state explosion when converting an NFA to a DFA. On the chart \ref{dfas_size:becchi}, we can see size of DFAs in MB. In contrast, NFAs are consistently less than 1 MB in size. For synthetic datasets, the uncompressed DFA representation has 40-50 times the memory requirement of its compressed counterpart. At the time of writing, the Dotstar.2 datasets exceed the device memory capacity when uncompressed-DFA representation is utilized.
 \begin{figure}[h!]
   \centering
@@ -273,7 +273,7 @@ The repetition of wildcards and large character sets can lead to a state explosi
       \legend{C-DFA, E-DFA, U-DFA}
     \end{axis}
   \end{tikzpicture}
-  \caption{Scaling of DFAs size, author's own work}
+  \caption{Scaling of DFAs size, author's own work, data from \cite{Becchi:regex_large_dataset}}
   \label{dfas_size:becchi}
 \end{figure}
 
@@ -286,7 +286,7 @@ E-DFA offers a reasonable trade-off between U-DFA and C-DFA, resulting in a 3-5 
   \begin{tikzpicture}
 
   \end{tikzpicture}
-  \caption{something about Speed NFA/DFA, author's own work}
+  \caption{something about Speed NFA/DFA, author's own work, data from \cite{Becchi:regex_large_dataset}}
   \label{speed NFA/DFA:becchi}
 \end{figure}
 
@@ -346,7 +346,7 @@ As shown in chart \ref{speedup:becchi}, both GPU implementations based on NFA an
       \legend{NFA, U-DFA, E-DFA}
     \end{axis}
   \end{tikzpicture}
-  \caption{Speed up of GPU accelerated traversals over CPU, author's own work}
+  \caption{Speed up of GPU accelerated traversals over CPU, author's own work, data from \cite{Becchi:regex_large_dataset}}
   \label{speedup:becchi}
 \end{figure}
 
@@ -356,7 +356,7 @@ This 2017 study\cite{Nourian:DemystifyingFSA} investigated the acceleration of F
 Their dataset consists of small NIDS, bioinformatics and synthetic pattern sets.
 The measurements were performed on a system that consisted of a dual 6-core Intel Xeon CPU and an Nvidia Titan X GPU\footnote{cuda cores} (Maxwell architecture), using CentOS 6.4 and CUDA 7. The FPGA Xilinx XC6VLX130T was chosen as it fell in the same price range as the GPU (approximately \$1,200 at that time).
 
-\subsubsection{Findings}
+\subsubsection{Study findings}
 The NFA format for GPU has a very small global memory utilisation, and even the largest dataset only occupies up to 133MB of global memory, which means we are able to fit any size dataset into a single GPU device, unlike FPGA and Micron's AP, which required more devices, as shown in the graph \ref{devices:DemystifyingFSA}. However, the GPU records the lowest throughput data, with a 20 times lower throughput on smaller datasets up to 1000 times lower on the largest datasets.
 % chart of devices used with dataset 
 % deep64char	deep256char	shallow64char	shallow256char
@@ -472,15 +472,29 @@ The optimization and partitioning steps for the NFA, which are common for all pl
           (3, 120.2)
           (4, 122)
         };
-      \legend{GPU, FPGA, Micron's AP}
+      \legend{GPU, Micron's AP, FPGA}
     \end{axis}
   \end{tikzpicture}
   \caption{Preprocessing time, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
   \label{preprocessing:DemystifyingFSA}
 \end{figure}
-\subsection{Papers on speeding up NFA processing on GPUs} \label{speeding up NFA processing on GPUs}
+\subsection{Papers on speeding up FSA processing on GPUs} \label{speeding up FSA processing on GPUs}
+\textit{"On-the-Fly Principled Speculation for FSM Parallelization"}\cite{zhao2015fly}, published in 2015, researched speculative execution of finite state machines. Their research was focused on DFAs. They have employed techniques to accelerate DFA executions, which have subsequently been utilised to increase GPU acceleration of DFAs.
+
+The paper \textit{"Scaling Out Speculative Execution of Finite State Machines with Parallel Merge"} \cite{Xia:FSA-scaling}, published in 2020, develops optimisation techniques to improve the performance of DFAs execution on GPUs by extending existing work on speculative execution of FSMs and adapting it to GPU design. Their findings demonstrate significant enhancements on a scale ranging from tens to hundreds, but although it works with regular expressions, this approach has not been tested on any real dataset to verify its effectiveness in a real-world environment.
+
+The latest paper on the execution of DFAs \textit{"GSpecPal: Speculation-Centric Finite State Machine Parallelization on GPUs"}\cite{wang2022gspecpal}, published in 2022, have addressed the existing bottlenecks, achieving an average speedup of 7.2x.
+
+\textit{"Why GPUs are Slow at Executing NFAs and How to Make Them Faster"} \cite{Liu:WhyGPUSlowNFA}, published in 2020, improves the implementation of NFAs. The authors conducted measurements on the NVIDIA Quadro P6000 GPU\footnote{} and demonstrated more than a 25 times speedup in several applications, outperforming the AP chip in some real-world datasets, such as snort or YARA. However, it should be noted that their approach has limitations and is most effective in applications with a large number of states and is not usable with large NFA's that may occur.
+
+The most recent research on NFAs, \textit{"Asynchronous Automata Processing on GPUs"}\cite{Liu:Asynchronous} from 2023, improved upon previous work and achieved a system that achieves a speedup of 2-50 times.
+\subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations}
+
+\subsection{Databases and regular expressions} \label{Databases and regular expressions}
 
 \section{Results and discussion} \label{Results}
+
+\section{Future work} \label{Future work}
 
 \section{Conclusions} \label{Conclusions}
 
