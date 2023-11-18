@@ -488,9 +488,12 @@ The latest paper on the execution of DFAs \textit{"GSpecPal: Speculation-Centric
 \textit{"Why GPUs are Slow at Executing NFAs and How to Make Them Faster"} \cite{Liu:WhyGPUSlowNFA}, published in 2020, improves the implementation of NFAs. The authors conducted measurements on the NVIDIA Quadro P6000 GPU\footnote{} and demonstrated more than a 25 times speedup in several applications, outperforming the AP chip in some real-world datasets, such as snort or YARA. However, it should be noted that their approach has limitations and is most effective in applications with a large number of states and is not usable with large NFA's that may occur.
 
 The most recent research on NFAs, \textit{"Asynchronous Automata Processing on GPUs"}\cite{Liu:Asynchronous} from 2023, improved upon previous work and achieved a system that achieves a speedup of 2-50 times.
-\subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations}
 
-\subsection{Databases and regular expressions} \label{Databases and regular expressions}
+\subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations}
+All the studies, except for \cite{rosciszewski2014regular} which utilized OpenCL, employed CUDA for implementing their approaches. Although the research by \cite{Fang:Comparison-cuda-opencl} suggests that there is no significant difference in performance, writing optimal code appears more convenient in CUDA. Nonetheless, utilizing CUDA implementation restricts the ability to execute the code on anything but Nvidia GPUs.
+
+\subsection{Heteregeneous computing} \label{Heteregeneous computing}
+Although research has been conducted on combining multiple accelerator platforms \cite{kobayashi2019gpu}, no work has been undertaken to utilize this method for accelerating regular expressions.
 
 \section{Results and discussion} \label{Results}
 
