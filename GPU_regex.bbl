@@ -73,6 +73,13 @@ Z.~István, D.~Sidler, and G.~Alonso.
 \newblock In {\em 2016 IEEE 24th Annual International Symposium on
   Field-Programmable Custom Computing Machines (FCCM)}, pages 204--211, 2016.
 
+\bibitem{kobayashi2019gpu}
+R.~Kobayashi, N.~Fujita, Y.~Yamaguchi, A.~Nakamichi, and T.~Boku.
+\newblock Gpu-fpga heterogeneous computing with opencl-enabled direct memory
+  access.
+\newblock In {\em 2019 IEEE International Parallel and Distributed Processing
+  Symposium Workshops (IPDPSW)}, pages 489--498. IEEE, 2019.
+
 \bibitem{Lee:myths}
 V.~W. Lee, C.~Kim, J.~Chhugani, M.~Deisher, D.~Kim, A.~D. Nguyen, N.~Satish,
   M.~Smelyanskiy, S.~Chennupaty, P.~Hammarlund, R.~Singhal, and P.~Dubey.
@@ -107,6 +114,12 @@ M.~Nourian, X.~Wang, X.~Yu, W.-c. Feng, and M.~Becchi.
   Supercomputing}, ICS '17, New York, NY, USA, 2017. Association for Computing
   Machinery.
 
+\bibitem{rosciszewski2014regular}
+P.~Ro{\'s}ciszewski, J.~Cychnerski, and A.~Brzeski.
+\newblock A regular expression matching application with configurable data
+  intensity for testing heterogeneous hpc systems.
+\newblock {\em Information Systems Architecture and Technology}, page~49, 2014.
+
 \bibitem{schatz2007fast}
 M.~C. Schatz and C.~Trapnell.
 \newblock Fast exact string matching on the gpu.
@@ -129,6 +142,13 @@ X.~Wang.
 \newblock {\em Techniques for efficient regular expression matching across
   hardware architectures}.
 \newblock University of Missouri-Columbia, 2014.
+
+\bibitem{wang2022gspecpal}
+Y.~Wang, R.~Watling, J.~Qiu, and Z.~Wang.
+\newblock Gspecpal: Speculation-centric finite state machine parallelization on
+  gpus.
+\newblock In {\em 2022 IEEE International Parallel and Distributed Processing
+  Symposium (IPDPS)}, pages 481--491. IEEE, 2022.
 
 \bibitem{Xia:FSA-scaling}
 Y.~Xia, P.~Jiang, and G.~Agrawal.
