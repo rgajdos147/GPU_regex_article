@@ -49,7 +49,6 @@
 \maketitle
 
 \begin{abstract}
-  \blindtext[2]
 
 \end{abstract}
 
@@ -490,17 +489,38 @@ The latest paper on the execution of DFAs \textit{"GSpecPal: Speculation-Centric
 The most recent research on NFAs, \textit{"Asynchronous Automata Processing on GPUs"}\cite{Liu:Asynchronous} from 2023, improved upon previous work and achieved a system that achieves a speedup of 2-50 times.
 
 \subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations}
-All the studies, except for \cite{rosciszewski2014regular} which utilized OpenCL, employed CUDA for implementing their approaches. Although the research by \cite{Fang:Comparison-cuda-opencl} suggests that there is no significant difference in performance, writing optimal code appears more convenient in CUDA. Nonetheless, utilizing CUDA implementation restricts the ability to execute the code on anything but Nvidia GPUs.
+All the studies, except for \cite{rosciszewski2014regular} which utilized OpenCL, employed CUDA for implementing their approaches. Although the research by \cite{Fang:Comparison-cuda-opencl} suggests that there is no significant difference in performance, writing optimal code appears more convenient in CUDA.
 
 \subsection{Heteregeneous computing} \label{Heteregeneous computing}
 Although research has been conducted on combining multiple accelerator platforms \cite{kobayashi2019gpu}, no work has been undertaken to utilize this method for accelerating regular expressions.
 
-\section{Results and discussion} \label{Results}
+\section{Results} \label{Results}
+Our analysis of the literature has demonstrated that the GPU is a viable platform for accelerating regular expressions. However, the GPU is not a universal solution and its use depends on the problem being addressed.
+\subsection{Finite Automata} \label{Finite Automata:Results}
+The study \cite{Becchi:regex_large_dataset} shows that DFA is the fastest solution for regular expression matching. However, a limiting factor can be the size of the DFA, especially on large datasets with multiple states, which can exceed the GPU's memory capacity. This can be alleviated by using a compressed DFA, which is slower than the uncompressed version, but faster than Non-Deterministic Finite Automata (NFA). Numerous studies have been undertaken to enhance the performance of DFA on GPU, with reference to \cite{zhao2015fly,Xia:FSA-scaling,wang2022gspecpal}. The state of the art solution \cite{wang2022gspecpal} should offer the fastest speed for some applications, but this solution has not been tested against current FPGA or AP solutions and is not known preprocessing time.
 
-\section{Future work} \label{Future work}
+NFA has a smaller size and a much faster preprocessing time compared to DFA, although it is slower in operation, as stated in \cite{Nourian:DemystifyingFSA}. Since the time of measuring in \cite{Becchi:regex_large_dataset}, several studies \cite{Liu:WhyGPUSlowNFA,Liu:Asynchronous} have been carried out to boost NFA performance on GPUs. The latest solution \cite{Liu:Asynchronous} provides a speedup over AP chip in some real-life datasets.
+
+No current study has yet offered data on when it is optimal to use DFA or NFA.
+
+\subsection{Other platforms} \label{Other platforms:Results}
+The research paper \cite{Nourian:DemystifyingFSA} demonstrates that for regular expression matching, FPGA and AP produce faster results compared to GPU. However, current state-of-the-art GPU solutions offer speeds that are comparable to FPGA and AP, while having significantly faster preprocessing time, as illustrated in Figure \ref{preprocessing:DemystifyingFSA}. While FPGA and AP remain superior solutions for datasets that are static and for businesses that can afford specialized solutions, GPUs are present in most devices and can be utilized for a multitude of tasks.
+
+Currently, no studies have been conducted on the combination of multiple accelerator platforms for the acceleration of regular expressions. However, prior research has examined the potential of integrating multiple accelerator platforms \cite{kobayashi2019gpu}. It is our belief that such an approach could be utilised to accelerate regular expressions, but further research is required.
+
+\subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations:Results}
+All the aforementioned studies, with the exception of \cite{rosciszewski2014regular} which used OpenCL, used CUDA to implement their approaches. According to research by \cite{Fang:Comparison-cuda-opencl}, there is no significant difference in performance, although writing optimal code in CUDA seems to be more convenient, but further research is needed.
+However, using the CUDA implementation limits the ability to run the code on anything other than Nvidia GPUs.
+
+\section{Discussion and Future work} \label{Discussion and Future work}
+% open source solutions
 
 \section{Conclusions} \label{Conclusions}
+Our study of the acceleration of regular expressions demonstrates that the GPU shows potential as a viable platform, depending on specific use cases and computational requirements. Deterministic Finite Automata (DFA) are able to perform at high speeds, although they encounter difficulties when processing large datasets due to their size. Non-Deterministic Finite Automata (NFA) present a feasible alternative since they are smaller in size and have a faster pre-processing, but the optimal circumstances for using either DFA or NFA remain unclear.
 
+Field-Programmable Gate Arrays (FPGA) and Application Processors (AP) are superior to GPUs in terms of regular expression matching speed. Nevertheless, GPUs currently compete with FPGA and AP speeds with notably expedited preprocessing.
+
+The possibility of combining multiple accelerator platforms with GPUs for regular expression acceleration, including an OpenCL comparison with CUDA, remains unexplored and warrants further investigation.
 
 \bibliography{zdroje}
 \bibliographystyle{abbrv}
