@@ -105,12 +105,15 @@
 \end{frame}
 
 
-\begin{frame}[fragile=singleslide]\frametitle{O čom to je}
-	Ešte pre prehľadom prezentácie sa zvyčajne uvádza motivácia.
-
-	Bežne sa aj tu používajú odrážky, ale tento text je naschvál uvedený bez odrážok. Niekedy môže byť potrebné uviesť aj citáty\ldots{}
-
-	Toto je len príklad slajdov. Ako urobiť dobrú prezentáciu bolo vysvetlené na prednáške.
+\begin{frame}[fragile=singleslide]\frametitle{GPU's or something else?}
+	\begin{itemize}
+		\item Can we use GPU's to accelerate regular expressions?
+		\item What are the alternatives?
+		\item What are the pros and cons of each?
+		\item What are the current state of the art measurements?
+		\item What are the current limitations?
+		\item What are the future directions?
+	\end{itemize}
 \end{frame}
 
 
@@ -203,7 +206,7 @@
 \begin{frame}[fragile=singleslide]\frametitle{Related work}
 	\begin{table}[htbp]
 		\centering
-		\scalebox{0.75}{
+		\scalebox{0.85}{
 			\begin{tabular}{|l|c|}
 				\hline
 				\textbf{Study}                                                            & \textbf{Year} \\
@@ -241,23 +244,127 @@
 
 \subsection{Studies findings}
 \begin{frame}[fragile=singleslide]\frametitle{Studies findings: FSA}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
 
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[h!]
+				\centering
+				% \scalebox{.9}[.9]{
+				\begin{tikzpicture}
+					\fontsize{9}{7.2}
+
+					\begin{axis}[
+							ylabel=Speed up,
+							xlabel=Dataset,
+							enlargelimits={abs=0.4},
+							legend style={at={(0.5,1.8)},
+									anchor=north,legend columns=3},
+							ybar,
+							bar width=0.2, % Adjust the width as needed
+							xtick=\empty, % Remove numbers on the x-axis
+							width=0.95 \textwidth,
+							height=0.5 \textwidth,
+							extra x ticks={1, 2}, % Add extra ticks at positions 1, 2, and 3
+							extra x tick labels={Backdoor, Spyware,}, % Label the extra ticks
+							% remove just frame, not ticks
+							axis x line*=bottom,
+							axis y line=left,
+							ymajorgrids=true,
+						]
+						\addplot
+						coordinates {
+								(1, 94)
+								(2, 51.55555556)
+							};
+						\addplot[
+							fill=green!75, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 21.69620253)
+								(2, 42.05)
+							};
+						\addplot[
+							fill=red!60, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 5.392405063)
+								(2, 7.95)
+							};
+						\node[green] at (axis cs:5,10) {X}; % Adjust the color
+						\legend{NFA, U-DFA, E-DFA}
+					\end{axis}
+				\end{tikzpicture}
+				\fontsize{5}{7.2}
+				\caption{Speed up of GPU accelerated traversals over CPU, data from \cite{Becchi:regex_large_dataset}}
+				\label{speedup:becchi}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile=singleslide]\frametitle{Studies findings: Acceleration platforms}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[h!]
+				\centering
+				% \scalebox{.9}[.9]{
+				\begin{tikzpicture}
+					\fontsize{9}{7.2}
+					\begin{axis}[
+							ylabel=Devices,
+							xlabel=Dataset,
+							enlargelimits={abs=0.4},
+							legend style={at={(0.45,1.8)},
+									anchor=north,legend columns=3},
+							ybar,
+							bar width=0.2, % Adjust the width as needed
+							xtick=\empty, % Remove numbers on the x-axis
+							width=0.95 \textwidth,
+							height=0.5 \textwidth,
+							extra x ticks={1, 2, 3, 4}, % Add extra ticks at positions 1, 2, and 3
+							extra x tick labels={deep64char, deep256char, shallow64char, shallow256char}, % Label the extra ticks
+							% remove just frame, not ticks
+							axis x line*=bottom,
+							axis y line=left,
+							ymajorgrids=true,
+						]
+						\addplot
+						coordinates {
+								(1, 0)
+								(1, 1)
+								(2, 1)
 
+							};
+						\addplot[
+							fill=red!60, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 3)
+								(2, 3)
+
+							};
+						\addplot[
+							fill=green!75, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 8)
+								(2, 8)
+
+							};
+						\legend{GPU, Micron's AP, FPGAs}
+					\end{axis}
+				\end{tikzpicture}
+				\caption{Number of devices, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
+				\label{devices:DemystifyingFSA}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+
+		\end{column}
+	\end{columns}
 \end{frame}
-
-
-
-
-
-
-
-
-
-
-
 
 
 \section*{Conclusion and future work}
@@ -265,8 +372,19 @@
 
 \begin{frame}[fragile=singleslide]\frametitle{Conclusion and future work}
 	\begin{itemize}
-		\item Každá prezentácia musí byť nejako uzavretá
-		\item Ale vždy je čo robiť ďalej\ldots{}
+		\item Conclusion
+		      \begin{itemize}
+			      \item GPU acceleration of regular expressions is possible and viable option
+			      \item DFA faster but larger memory footprint
+			      \item NFA slower but smaller memory footprint
+			      \item FPGA and AP are more efficient, but less flexible
+		      \end{itemize}
+		\item Future work
+		      \begin{itemize}
+			      \item Up to date measurements
+			      \item Heteregeneous acceleration
+			      \item CUDA and OpenCL
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -275,40 +393,5 @@
 	\bibliography{zdroje}
 	\bibliographystyle{plain}
 \end{frame}
-
-
-
 \end{document}
 
-\section*{TEST}
-% hviezdička zabezpečí, aby sa táto časť neocitla v prehľade prezentácie - každá prezentácia má zhodnotenie a prehľad by sa tým zbytočne zahlcoval
-
-\begin{frame}[fragile=singleslide]\frametitle{Test}
-	\begin{table}
-		\begin{tabular}{l | c | c | c | c }
-			Competitor Name & Swim  & Cycle & Run   & Total \\
-			\hline \hline
-			John T          & 13:04 & 24:15 & 18:34 & 55:53 \\
-			Norman P        & 8:00  & 22:45 & 23:02 & 53:47 \\
-			Alex K          & 14:00 & 28:00 & n/a   & n/a   \\
-			Sarah H         & 9:22  & 21:10 & 24:03 & 54:35
-		\end{tabular}
-		\caption{Triathlon results}
-	\end{table}
-\end{frame}
-
-\begin{frame}[fragile=singleslide]\frametitle{Test2}
-	\frametitle{Pictures}
-	\begin{figure}
-		\includegraphics[scale=0.5]{Diagram2.png}
-		\caption{test}
-	\end{figure}
-	adfklajdfadvafgsfbsg
-\end{frame}
-
-
-
-
-
-
-Text \end{document} za príkazom \end{document} LaTeX ignoruje, takže tu môžete odkladať veci (aj celé slajdy), ktoré nechcete vymazať, lebo ich ešte možno budete potrebovať, avšak ich v danom momente nechcete mať v slajdoch.
