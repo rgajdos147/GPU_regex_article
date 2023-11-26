@@ -234,8 +234,8 @@ The repetition of wildcards and large character sets can lead to a state explosi
   % \scalebox{.9}[.9]{
   \begin{tikzpicture}
     \begin{axis}[
-        ylabel=Number of states,
-        xlabel=DFAs size in MB,
+        ylabel=DFAs size in MB,
+        xlabel=Number of states,
         enlargelimits={abs=0.4},
         legend style={at={(0.5,1)},
             anchor=north,legend columns=3},
@@ -245,7 +245,7 @@ The repetition of wildcards and large character sets can lead to a state explosi
         width=0.95 \textwidth,
         height=0.5 \textwidth,
         extra x ticks={1, 2, 3}, % Add extra ticks at positions 1, 2, and 3
-        extra x tick labels={251, 603.8, 1600}, % Label the extra ticks
+        extra x tick labels={251k, 603.8k, 1600k}, % Label the extra ticks
         % remove just frame, not ticks
         axis x line*=bottom,
         axis y line=left,
