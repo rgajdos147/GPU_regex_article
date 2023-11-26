@@ -31,7 +31,7 @@
 \usetikzlibrary{arrows.meta}
 \usepackage{pgfplots} 
 \pgfplotsset{compat=1.18}
-\usepgfplotslibrary{external}
+% \usepgfplotslibrary{external}
 % \tikzexternalize
 
 % \lstset{language=C++,basicstyle=\fontsize{8}{9.6}\selectfont,showstringspaces=false,columns=fullflexible,identifierstyle=\ttfamily,keywordstyle=\bfseries,showstringspaces=false,columns=fullflexible}
@@ -84,11 +84,11 @@
 %\url{www.fiit.stuba.sk/~vranic}, \url{vranic@fiit.stuba.sk}}
 %{\tiny \url{www.fiit.stuba.sk/~vranic}, \url{vranic@fiit.stuba.sk}}
 \institute{
-	Ústav informatiky, informačných systémov a softvérového inžinierstva\\
-	Fakulta informatiky a informačných technológií\\
-	Slovenská technická univerzita v Bratislave}
+	Institute of Informatics, Information Systems and Software Engineering\\
+	Faculty of Informatics and Information Technologies\\
+	Slovak University of Technology in Bratislava}
 
-\subtitle{\vspace{3mm} Engineering Methods 2023/2024}
+\subtitle{Engineering Methods 2023/2024}
 
 \title{Overview and Analysis of GPU Acceleration for Regular Expressions
 }
@@ -246,7 +246,37 @@
 \begin{frame}[fragile=singleslide]\frametitle{Studies findings: FSA}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
-
+			% table from data Speedup of DFA's formats over NFA			
+			% Dataset	U-DFA	C-DFA	E-DFA
+			% Backdoor	4.56	0.37	1.13
+			% Spyware	3.63	0.25	0.69
+			% E-M	8.63	8.63	8.63
+			% Range.5	8.51	8.51	8.51
+			% Range1	8.24	8.24	8.24
+			% Dotstar.05	7.39	0.53	1.44
+			% Dotstar.1	6.08	0.34	1.16
+			% Dotstar.2	x	0.26	1.10
+			\begin{table}
+				\centering
+				\scalebox{0.75}{
+					\begin{tabular}{|l|c|c|c|}
+						\hline
+						\textbf{Dataset} & \textbf{U-DFA} & \textbf{C-DFA} & \textbf{E-DFA} \\
+						\hline
+						Backdoor         & 4.56           & 0.37           & 1.13           \\
+						Spyware          & 3.63           & 0.25           & 0.69           \\
+						E-M              & 8.63           & 8.63           & 8.63           \\
+						Range.5          & 8.51           & 8.51           & 8.51           \\
+						Range1           & 8.24           & 8.24           & 8.24           \\
+						Dotstar.05       & 7.39           & 0.53           & 1.44           \\
+						Dotstar.1        & 6.08           & 0.34           & 1.16           \\
+						Dotstar.2        & X              & 0.26           & 1.10           \\
+						\hline
+					\end{tabular}
+				}
+				\caption{Speedup of DFA's formats over NFA, data from \cite{Becchi:regex_large_dataset}}
+				\label{speedup_dfa:becchi}
+			\end{table}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 			\begin{figure}[h!]
@@ -273,7 +303,9 @@
 							axis y line=left,
 							ymajorgrids=true,
 						]
-						\addplot
+						\addplot[
+							fill=blue!50, % Set a custom color for this bar
+						]
 						coordinates {
 								(1, 94)
 								(2, 51.55555556)
@@ -361,7 +393,55 @@
 			\end{figure}
 		\end{column}
 		\begin{column}{0.5\textwidth}
-
+			\begin{figure}[h!]
+				\centering
+				% \scalebox{.9}[.9]{
+				\begin{tikzpicture}
+					\fontsize{9}{7.2}
+					\begin{axis}[
+							ylabel=Preprocessing \texttt{[min]},
+							xlabel=Dataset,
+							enlargelimits={abs=0.4},
+							legend style={at={(0.5,2.2)},
+									anchor=north,legend columns=3},
+							ybar,
+							bar width=0.2, % Adjust the width as needed
+							xtick=\empty, % Remove numbers on the x-axis
+							width=0.95 \textwidth,
+							height=0.5 \textwidth,
+							extra x ticks={1, 2}, % Add extra ticks at positions 1, 2, and 3
+							extra x tick labels={ shallow64, shallow256}, % Label the extra ticks
+							% remove just frame, not ticks
+							axis x line*=bottom,
+							axis y line=left,
+							ymajorgrids=true,
+							ymode=log, % Set Y-axis to log scale
+						]
+						\addplot
+						coordinates {
+								(1, 1.366666667)
+								(2, 4.766666667)
+							};
+						\addplot[
+							fill=red!60, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 224)
+								(2, 757)
+							};
+						\addplot[
+							fill=green!75, % Set a custom color for this bar
+						]
+						coordinates {
+								(1, 120.2)
+								(2, 122)
+							};
+						\legend{GPU, Micron's AP, FPGA}
+					\end{axis}
+				\end{tikzpicture}
+				\caption{Preprocessing time, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
+				\label{preprocessing:DemystifyingFSA}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -389,7 +469,7 @@
 \end{frame}
 
 \begin{frame}[fragile=singleslide]\frametitle{Bibliography}
-	\fontsize{4.5}{1}
+	\fontsize{4}{7.2}
 	\bibliography{zdroje}
 	\bibliographystyle{plain}
 \end{frame}
