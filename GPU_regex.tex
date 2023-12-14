@@ -15,6 +15,7 @@
 \usepackage{cite}
 \usepackage{amsmath}
 \usepackage{wrapfig}
+\usepackage{float}
 % \usepackage{}
 %\usepackage{times}
 \usepackage{tikz}
@@ -49,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-  Pattern matching is essential across numerous domains and regular expressions are a fundamental component. They are used in various applications, including database queries, network security, bioinformatics and more. It is crucial to ensure efficient use of memory and speed, particularly when handling vast datasets or time-sensitive tasks.
+  Pattern matching is essential across numerous domains and regular expressions are its fundamental component. They are used in various applications, including database queries, network security, bioinformatics and more. It is crucial to ensure efficient use of memory and speed, particularly when handling vast datasets or time-sensitive tasks.
   Conventional processors face limitations in their ability to execute parallel tasks. However, Graphics Processing Units (GPUs) have become prevalent in many computing systems and offer a promising solution with extensive parallelism, computational capacity, and high memory bandwidth.
 
   This paper provides a comprehensive overview of GPU-accelerated regular expressions, including comparative analysis and reference to previous studies. Our investigation into the acceleration of regular expressions illustrates the potential of the GPU as a practical platform for pre-processing, which outperforms other platforms in terms of speed, but sometimes operates with a lower throughput. Moreover, we demonstrate variations in the performance of finite automata representations and their effect, explaining that the NFA representation is more efficient in terms of memory, whereas the DFA representation is more rapid. We also note the need for further research in this area. There has been minimal recent exploration, specifically regarding the potential combination of different accelerator platforms with GPUs for regular expression acceleration or examination of OpenCL in comparison to CUDA is yet to be undertaken, and would benefit from investigation.
@@ -287,7 +288,7 @@ The repetition of wildcards and large character sets can lead to a state explosi
 As shown in chart \ref{speed NFA/DFA:becchi}, the U-DFA is the optimal solution for all pattern-sets, when applicable. However, this solution has high memory requirements and cannot be applied to complex pattern-sets due to a lack of graphics card memory.
 E-DFA offers a reasonable trade-off between U-DFA and C-DFA, resulting in a 3-5 times enhancement in speed compared to C-DFA at the expense of almost 1.5X more memory usage. Moreover, E-DFA performs better than NFA solutions on nearly all datasets.
 
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -537,13 +538,13 @@ The optimization and partitioning steps for the NFA, which are common for all pl
 \subsection{Papers on speeding up FSA processing on GPUs} \label{speeding up FSA processing on GPUs}
 \textit{On-the-Fly Principled Speculation for FSM Parallelization}\cite{zhao2015fly}, published in 2015, researched speculative execution of finite state machines. Their research was focused on DFAs. They have employed techniques to accelerate DFA executions, which have subsequently been utilised to increase GPU acceleration of DFAs.
 
-The paper \textit{Scaling Out Speculative Execution of Finite State Machines with Parallel Merge} \cite{Xia:FSA-scaling}, published in 2020, develops optimisation techniques to improve the performance of DFAs execution on GPUs by extending existing work on speculative execution of FSMs and adapting it to GPU design. Their findings demonstrate significant enhancements on a scale ranging from tens to hundreds, but although it works with regular expressions, this approach has not been tested on any real dataset to verify its effectiveness in a real-world environment.
+The paper \textit{Scaling Out Speculative Execution of Finite State Machines with Parallel Merge} \cite{Xia:FSA-scaling}, published in 2020, develops optimisation techniques to improve the performance of DFAs execution on GPUs by extending existing work on speculative execution of FSMs and adapting it to GPU design. Their findings demonstrate significant enhancements on a scale ranging from tens to hundreds.
 
-The latest paper on the execution of DFAs \textit{GSpecPal: Speculation-Centric Finite State Machine Parallelization on GPUs}\cite{wang2022gspecpal}, published in 2022, have addressed the existing bottlenecks, achieving an average speedup of 7.2x.
+The latest paper on the execution of DFAs \textit{GSpecPal: Speculation-Centric Finite State Machine Parallelization on GPUs}\cite{wang2022gspecpal}, published in 2022, have addressed the existing bottlenecks, achieving an average speedup of 7.2x, but although it works with regular expressions, this approach has not been tested on any real dataset to verify its effectiveness in a real-world environment.
 
 \textit{Why GPUs are Slow at Executing NFAs and How to Make Them Faster} \cite{Liu:WhyGPUSlowNFA}, published in 2020, improves the implementation of NFAs. The authors conducted measurements on the NVIDIA Quadro P6000 GPU and demonstrated more than a 25 times speedup in several applications, outperforming the AP chip in some real-world datasets, such as snort or YARA. However, it should be noted that their approach has limitations and is most effective in applications with a large number of states and is not usable with large NFA's that may occur.
 
-The most recent research on NFAs, \textit{Asynchronous Automata Processing on GPUs}\cite{Liu:Asynchronous} from 2023, improved upon previous work and achieved a system that achieves a speedup of 2-50 times.
+The most recent research on NFAs, \textit{Asynchronous Automata Processing on GPUs}\cite{Liu:Asynchronous} from 2023, improved upon previous work and achieved a system that achieves a speedup of 2-50 times depending on the degree of parallelization in previous solutions. No measurements have been taken on real-world datasets, and there is no information available on how this compares to other platforms.
 
 \subsection{OpenCL and CUDA implementations} \label{OpenCL and CUDA implementations}
 All the studies, except for \cite{rosciszewski2014regular} which utilized OpenCL, employed CUDA for implementing their approaches. Although the research by \cite{Fang:Comparison-cuda-opencl} suggests that there is no significant difference in performance, writing optimal code appears more convenient in CUDA.
@@ -552,7 +553,7 @@ All the studies, except for \cite{rosciszewski2014regular} which utilized OpenCL
 Although research has been conducted on combining multiple accelerator platforms \cite{kobayashi2019gpu}, no work has been undertaken to utilize this method for accelerating regular expressions.
 
 \section{Results} \label{Results}
-Our analysis of the literature has demonstrated that the GPU is a viable platform for accelerating regular expressions. However, the GPU is not a universal solution and its use depends on the problem being addressed.
+Our analysis of the literature has demonstrated that the GPU is a viable platform for accelerating regular expressions. However, their use depends on the specific problem being addressed, and the optimal use case for GPUs remains unclear.
 \subsection{Finite Automata} \label{Finite Automata:Results}
 The study \cite{Becchi:regex_large_dataset} shows that DFA is the fastest solution for regular expression matching. However, a limiting factor can be the size of the DFA, especially on large datasets with multiple states, which can exceed the GPU's memory capacity. This can be alleviated by using a compressed DFA, which is slower than the uncompressed version, but faster than Non-Deterministic Finite Automata (NFA). Numerous studies have been undertaken to enhance the performance of DFA on GPU, with reference to \cite{zhao2015fly,Xia:FSA-scaling,wang2022gspecpal}. The state of the art solution \cite{wang2022gspecpal} should offer the fastest speed for some applications, but this solution has not been tested against current FPGA or AP solutions and is not known preprocessing time.
 
