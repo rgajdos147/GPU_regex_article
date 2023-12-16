@@ -29,8 +29,8 @@
 % \setlength{\parskip}{0pt}
 
 \pgfplotsset{compat=1.18}
-\usepgfplotslibrary{external}
-\tikzexternalize
+% \usepgfplotslibrary{external}
+% \tikzexternalize
 
 \title{Overview and Analysis of GPU Acceleration for Regular Expressions
 \thanks{Semestjrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2023/24, vedenie: MSc. Mirwais Ahmadzai}} % meno a priezvisko vyučujúceho na cvičeniach
@@ -236,7 +236,6 @@ Measurements were made on system consisting of Xeon E5620 CPU and an NVIDIA GTX 
 The repetition of wildcards and large character sets can lead to a state explosion when converting an NFA to a DFA. On the chart \ref{dfas_size:becchi}, we can see size of DFAs in MB. In contrast, NFAs are consistently less than 1 MB in size. For synthetic datasets, the uncompressed DFA representation has 40-50 times the memory requirement of its compressed counterpart. At the time of writing, the Dotstar.2 datasets exceed the device memory capacity when uncompressed-DFA representation is utilized.
 \begin{figure}[h!]
   \centering
-  % \scalebox{.9}[.9]{
   \begin{tikzpicture}
     \begin{axis}[
         ylabel=DFAs size in MB,
@@ -399,7 +398,7 @@ As shown in chart \ref{speedup:becchi}, both GPU implementations based on NFA an
           (4, 5.807692308)
           (5, 8.21875)
         };
-      \node[green] at (axis cs:5,10) {X}; % Adjust the color
+      \node[green] at (axis cs:5,10) {X};
       \legend{NFA, U-DFA, E-DFA}
     \end{axis}
   \end{tikzpicture}
@@ -415,14 +414,9 @@ The measurements were performed on a system that consisted of a dual 6-core Inte
 
 \subsubsection{Study findings}
 The NFA format for GPU has a very small global memory utilisation, and even the largest dataset only occupies up to 133MB of global memory, which means we are able to fit any size dataset into a single GPU device, unlike FPGA and Micron's AP, which required more devices, as shown in the graph \ref{devices:DemystifyingFSA}. However, the GPU records the lowest throughput data, with a 20 times lower throughput on smaller datasets up to 1000 times lower on the largest datasets.
-% chart of devices used with dataset 
-% deep64char	deep256char	shallow64char	shallow256char
-% GPU	1	1	1	1
-% FPGA	8	8	7	8
-% Micron's AP	3	3	5	3
+
 \begin{figure}[h!]
   \centering
-  % \scalebox{.9}[.9]{
   \begin{tikzpicture}
     \begin{axis}[
         ylabel=Number of devices,
@@ -471,16 +465,12 @@ The NFA format for GPU has a very small global memory utilisation, and even the 
       \legend{GPU, Micron's AP, FPGAs}
     \end{axis}
   \end{tikzpicture}
-  \caption{Number of devices, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
+  \caption{Number of devices used for datasets, part of figure 5 from \cite{Nourian:DemystifyingFSA}}
   \label{devices:DemystifyingFSA}
 \end{figure}
 
 The optimization and partitioning steps for the NFA, which are common for all platforms, take between 3 and 249 seconds, varying with the size of the dataset. The GPU preprocessing task is primarily concerned with parsing the NFA partition files. As clearly demonstrated in Figure \ref{preprocessing:DemystifyingFSA}, GPUs provide considerably shorter preprocessing times.
-% chart of preprocessing time
-% deep64char	deep256char	shallow64char	shallow256char
-% GPU	1	4.583333333	1.366666667	4.766666667
-% FPGA (avg)	127.5	107.6	120.2	122
-% Micron's AP	12	12	224	757
+
 \begin{figure}[h!]
   \centering
   % \scalebox{.9}[.9]{
@@ -576,6 +566,19 @@ Our analysis didn't provide a definitive answer to the question of when to use G
 
 CUDA was the most widely used platform in the research, but there is a lack of research into the use of OpenCL. Using OpenCL would allow the code to run on a wider range of GPUs, but it is not known whether the performance or ease of implementation would be comparable to CUDA.
 Another area that could be explored is the combination of different accelerator platforms. The research shows that it is possible to combine multiple accelerator platforms, but it is not known whether this would be beneficial for the same use cases.
+
+\paragraph{Sustainability and ethics.}
+We have come to a time where the use of pattern matching has become a necessity, for example in cybersecurity where it is used to inspect internet traffic, and as the speed of the internet and the onslaught of cyber-attacks continue to increase, it is necessary that this service is effective enough. But the problem is that simply adding more processing power to ensure sufficient performance is unsustainable for both financial and environmental reasons. It is therefore necessary to continue research to improve these technologies and ensure their maximum efficiency, which will allow us to develop faster and save money and the environment.
+
+\paragraph{Technology and people.}
+All technologies have people who have driven their development from the first thought to the present day. Just as it was people like George Boole and Alan Turing who made computers possible, so regular expressions and their acceleration on graphics cards have people who have pushed the field forward, whether it is Kleene who defined regular languages or Ken Thompson who popularised them by putting them in the QED editor and B programming language.
+
+But the name that came up most often for me while doing this work was Michela Becchi, a professor at North Carolina State University who works on accelerating pattern recognition. She has worked on the two studies most relevant to this work and many others in the field. Since she will never be as well known as those mentioned above, I would like to highlight her, at least in this part, as a person who is driving the technology forward.
+
+\paragraph{Historical context.}
+Regular expressions, originated in the mid-20th century for formal language theory. They were integrated into a POSIX standard and became an integral part of programming. Today, regular expressions are fundamental to string manipulation and text processing.
+
+Research into the use of GPUs for regular expression matching started with the publication of \textit{Fast Exact String Matching on the GPU}, which used it for bioinformatics, many soon followed with research focusing on network detection systems. However, due to the limitations of GPUs and the algorithms of the time, the GPU solutions were inferior to other solutions. This changed not too long ago when papers such as \textit{Why GPUs are Slow at Executing NFAs and How to Make them Faster} began to publish algorithms that could rival AP and FPGAs.
 
 \section{Conclusions} \label{Conclusions}
 Our study of the acceleration of regular expressions demonstrates that the GPU shows potential as a viable platform, depending on specific use cases and computational requirements. Deterministic Finite Automata (DFA) are able to perform at high speeds, although they encounter difficulties when processing large datasets due to their size. Non-Deterministic Finite Automata (NFA) present a feasible alternative since they are smaller in size and have a faster pre-processing, but the optimal circumstances for using either DFA or NFA remain unclear.
